@@ -1,0 +1,45 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.NormativaInterna
+@{
+    ViewData["Title"] = "Editar Normativa";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Editar Normativa</h2>
+            <p>Archivo actual: <a href="@Model.Archivo" target="_blank">Ver documento actual</a></p>
+        </div>
+    </div>
+
+    @if (ViewBag.ErrorNormativa != null)
+    {
+        <p class="mensaje-error">@ViewBag.ErrorNormativa</p>
+    }
+
+    <div class="tarjeta-listado" style="padding:24px;">
+        <form method="post" asp-action="Editar" enctype="multipart/form-data">
+            <input type="hidden" name="NormativaId" value="@Model.NormativaId" />
+
+            <div class="campo">
+                <label for="Titulo">Título</label>
+                <input type="text" id="Titulo" name="Titulo" value="@Model.Titulo" required />
+            </div>
+
+            <div class="campo">
+                <label for="Descripcion">Descripción (opcional)</label>
+                <textarea id="Descripcion" name="Descripcion" rows="3"
+                          style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;">@Model.Descripcion</textarea>
+            </div>
+
+            <div class="campo">
+                <label for="archivo">Reemplazar archivo (opcional)</label>
+                <input type="file" id="archivo" name="archivo" accept=".pdf,.doc,.docx" />
+            </div>
+
+            <div class="detalle-footer">
+                <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+                <button type="submit" class="btn-guardar-usuario">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Evento
+@{
+    var todosRoles = ViewBag.Roles as List<LiceoRHV.SistemaAvisos.Models.Rol>;
+    var todasCategorias = ViewBag.Categorias as List<LiceoRHV.SistemaAvisos.Models.Categorium>;
+    var rolesIds = Model.Rols.Select(r => r.RolId).ToHashSet();
+    var categoriasIds = Model.Categoria.Select(c => c.CategoriaId).ToHashSet();
+
+    var imagenesEvento = Model.ArchivoEventos.Where(a => a.TipoArchivo != null && a.TipoArchivo.StartsWith("image/")).ToList();
+    var pdfsEvento = Model.ArchivoEventos.Where(a => a.TipoArchivo == "application/pdf").ToList();
+    var otrosEvento = Model.ArchivoEventos.Where(a => a.TipoArchivo == null || (!a.TipoArchivo.StartsWith("image/") && a.TipoArchivo != "application/pdf")).ToList();
+    var claseGaleriaEvento = "galeria-" + Math.Min(imagenesEvento.Count, 4);
+}
+
+<div id="vistaDetalleEvento">
+    <div class="detalle-usuario">
+        <div class="detalle-header">
+            <h5>@Model.Titulo</h5>
+            <span class="badge-estado badge-inactiva">@Model.Estado</span>
+        </div>
+        <div class="detalle-grid-vertical">
+            <div><label>Descripción</label><p>@Model.Descripcion</p></div>
+            <div><label>Fecha y hora</label><p>@Model.FechaEvento.ToString("dd/MM/yyyy") - @Model.HoraEvento.ToString("HH:mm")</p></div>
+            <div><label>Ubicación</label><p>@(Model.Ubicacion ?? "—")</p></div>
+            <div><label>Público destinatario</label><p>@string.Join(", ", Model.Rols.Select(r => r.NombreRol))</p></div>
+            <div><label>Categorías</label><p>@(Model.Categoria.Any() ? string.Join(", ", Model.Categoria.Select(c => c.NombreCategoria)) : "—")</p></div>
+            <div><label>Inscripción</label><p>@(Model.RequiereInscripcion ? $"Sí ({Model.Inscripcions.Count}{(Model.CupoMaximo != null ? " / " + Model.CupoMaximo : "")})" : "No requiere")</p></div>
+            <div><label>Creado por</label><p>@Model.CreadoPorUsuario?.Nombre</p></div>
+        </div>
+
+        @if (imagenesEvento.Any())
+        {
+            <div class="galeria-comunicacion @claseGaleriaEvento" style="margin-top:14px;">
+                @foreach (var img in imagenesEvento)
+                {
+                    <a href="@img.Ruta" target="_blank"><img src="@img.Ruta" alt="@img.NombreArchivo" loading="lazy" /></a>
+                }
+            </div>
+        }
+
+        @foreach (var pdf in pdfsEvento)
+        {
+            <div class="normativa-preview" style="margin-top:14px;">
+                <iframe src="@pdf.Ruta" title="@pdf.NombreArchivo"></iframe>
+            </div>
+        }
+
+        @if (otrosEvento.Any())
+        {
+            <div class="campo" style="margin-top:14px;">
+                <label style="font-size:12px; color:#8A9A8C; text-transform:uppercase; display:block; margin-bottom:6px;">Otros archivos</label>
+                <ul style="margin:0; padding-left:18px; font-size:13.5px;">
+                    @foreach (var a in otrosEvento)
+                    {
+                        <li><a href="@a.Ruta" target="_blank">@a.NombreArchivo</a></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+    <div class="detalle-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="mostrarEdicionEvento()">Editar</button>
+        <form asp-controller="Eventos" asp-action="Eliminar" method="post" id="formEliminarEvento">
+            <input type="hidden" name="id" value="@Model.EventoId" />
+            <button type="button" class="btn-inactivar-usuario"
+                    onclick="confirmarAccion(document.getElementById('formEliminarEvento'), '¿Eliminar este evento de forma permanente?')">
+                Eliminar
+            </button>
+        </form>
+    </div>
+</div>
+
+<div id="formEdicionEvento" style="display:none;">
+    <form asp-controller="Eventos" asp-action="EditarEvento" method="post">
+        <input type="hidden" name="EventoId" value="@Model.EventoId" />
+
+        <div class="campo">
+            <label>Título</label>
+            <input type="text" name="Titulo" value="@Model.Titulo" required />
+        </div>
+
+        <div class="campo">
+            <label>Descripción</label>
+            <textarea name="Descripcion" rows="4" style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;">@Model.Descripcion</textarea>
+        </div>
+
+        <div class="form-grid-2">
+            <div class="campo">
+                <label>Fecha</label>
+                <input type="date" name="FechaEvento" value="@Model.FechaEvento.ToString("yyyy-MM-dd")" required />
+            </div>
+            <div class="campo">
+                <label>Hora</label>
+                <input type="time" name="HoraEvento" value="@Model.HoraEvento.ToString("HH:mm")" required />
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Ubicación</label>
+            <input type="text" name="Ubicacion" value="@Model.Ubicacion" />
+        </div>
+
+        <div class="campo">
+            <label class="seleccionar-todos" style="color:#1A2E20;">
+                <input type="checkbox" id="RequiereInscripcionEdit" name="RequiereInscripcion" value="true" @(Model.RequiereInscripcion ? "checked" : "")
+                       onchange="document.getElementById('bloqueCupoEdit').style.display = this.checked ? 'block' : 'none';" />
+                Requiere inscripción
+            </label>
+        </div>
+
+        <div class="campo" id="bloqueCupoEdit" style="display:@(Model.RequiereInscripcion ? "block" : "none");">
+            <label>Cupo máximo</label>
+            <input type="number" name="CupoMaximo" min="1" value="@Model.CupoMaximo" />
+        </div>
+
+        <div class="campo">
+            <label>Público destinatario</label>
+            <div class="selector-opciones">
+                @foreach (var rol in todosRoles)
+                {
+                    <label class="opcion-tarjeta chica">
+                        <input type="checkbox" name="rolesSeleccionados" value="@rol.RolId" @(rolesIds.Contains(rol.RolId) ? "checked" : "") />
+                        <span class="opcion-contenido"><strong>@rol.NombreRol</strong></span>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Categorías</label>
+            <div class="selector-opciones">
+                @foreach (var cat in todasCategorias)
+                {
+                    <label class="opcion-tarjeta chica">
+                        <input type="checkbox" name="categoriasSeleccionadas" value="@cat.CategoriaId" @(categoriasIds.Contains(cat.CategoriaId) ? "checked" : "") />
+                        <span class="opcion-contenido"><strong>@cat.NombreCategoria</strong></span>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <div class="detalle-footer">
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="ocultarEdicionEvento()">Cancelar</button>
+            <button type="submit" class="btn-guardar-usuario">Guardar cambios</button>
+        </div>
+    </form>
+</div>

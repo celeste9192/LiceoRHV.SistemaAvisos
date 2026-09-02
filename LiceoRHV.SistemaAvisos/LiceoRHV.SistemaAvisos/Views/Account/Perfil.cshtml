@@ -1,0 +1,150 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Usuario
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Mi Perfil</h2>
+            <p>Información de tu cuenta.</p>
+        </div>
+    </div>
+
+    @if (TempData["MensajePerfil"] != null)
+    {
+        <p class="mensaje-exito" style="margin-bottom:16px;">@TempData["MensajePerfil"]</p>
+    }
+    @if (TempData["ErrorPerfil"] != null)
+    {
+        <p class="mensaje-error" style="margin-bottom:16px;">@TempData["ErrorPerfil"]</p>
+    }
+    @if (TempData["ErrorPassword"] != null)
+    {
+        <p class="mensaje-error" style="margin-bottom:16px;">@TempData["ErrorPassword"]</p>
+    }
+
+    <div class="tarjeta-listado" style="padding: 24px;">
+
+        <!-- VISTA NORMAL -->
+        <div id="vistaPerfil">
+            <div class="detalle-usuario">
+                <div class="detalle-header">
+                    <h5>@Model.Nombre</h5>
+                    <span class="badge-estado badge-activa">@Model.Estado</span>
+                </div>
+
+                <div class="detalle-grid-vertical">
+                    <div>
+                        <label>Cédula</label>
+                        <p>@Model.Cedula</p>
+                    </div>
+                    <div>
+                        <label>Correo</label>
+                        <p>@Model.Correo</p>
+                    </div>
+                    <div>
+                        <label>Teléfono</label>
+                        <p>@(string.IsNullOrEmpty(Model.Telefono) ? "—" : Model.Telefono)</p>
+                    </div>
+                    <div>
+                        <label>Rol</label>
+                        <p>@Model.Rol?.NombreRol</p>
+                    </div>
+                    <div>
+                        <label>Miembro desde</label>
+                        <p>@Model.FechaRegistro.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detalle-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="mostrarEdicionPerfil()">
+                    Editar información
+                </button>
+                <button type="button" class="btn-guardar-usuario" onclick="mostrarCambioPassword()">
+                    Cambiar contraseña
+                </button>
+            </div>
+        </div>
+
+        <!-- FORMULARIO: EDITAR INFORMACIÓN -->
+        <div id="formEdicionPerfil" style="display:none;">
+            <form asp-controller="Account" asp-action="EditarPerfil" method="post" autocomplete="off">
+                <div class="campo">
+                    <label for="Nombre">Nombre completo</label>
+                    <input type="text" id="Nombre" name="Nombre" value="@Model.Nombre" autocomplete="off" required />
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label for="Cedula">Cédula</label>
+                        <input type="text" id="Cedula" name="Cedula" value="@Model.Cedula" autocomplete="off" required
+                               pattern="[0-9\-]{9,12}" title="Solo números y guiones, entre 9 y 12 caracteres" />
+                    </div>
+                    <div class="campo">
+                        <label for="Telefono">Teléfono</label>
+                        <input type="text" id="Telefono" name="Telefono" value="@Model.Telefono" autocomplete="off"
+                               pattern="[0-9\-]{8,9}" title="Solo números y guiones, entre 8 y 9 caracteres" />
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="Correo">Correo</label>
+                    <input type="email" id="Correo" name="Correo" value="@Model.Correo" autocomplete="off" required />
+                </div>
+
+                <div class="detalle-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="ocultarEdicionPerfil()">Cancelar</button>
+                    <button type="submit" class="btn-guardar-usuario">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- FORMULARIO: CAMBIAR CONTRASEÑA -->
+        <div id="formCambioPassword" style="display:none;">
+            <form asp-controller="Account" asp-action="CambiarPassword" method="post" autocomplete="off">
+                <div class="campo">
+                    <label for="passwordActual">Contraseña actual</label>
+                    <input type="password" id="passwordActual" name="passwordActual" autocomplete="off" required />
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label for="nuevaPassword">Nueva contraseña</label>
+                        <input type="password" id="nuevaPassword" name="nuevaPassword" autocomplete="new-password" minlength="8" required />
+                    </div>
+                    <div class="campo">
+                        <label for="confirmarPassword">Confirmar nueva contraseña</label>
+                        <input type="password" id="confirmarPassword" name="confirmarPassword" autocomplete="new-password" minlength="8" required />
+                    </div>
+                </div>
+
+                <div class="detalle-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="ocultarCambioPassword()">Cancelar</button>
+                    <button type="submit" class="btn-guardar-usuario">Actualizar contraseña</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function mostrarEdicionPerfil() {
+        document.getElementById('vistaPerfil').style.display = 'none';
+        document.getElementById('formEdicionPerfil').style.display = 'block';
+    }
+    function ocultarEdicionPerfil() {
+        document.getElementById('formEdicionPerfil').style.display = 'none';
+        document.getElementById('vistaPerfil').style.display = 'block';
+    }
+    function mostrarCambioPassword() {
+        document.getElementById('vistaPerfil').style.display = 'none';
+        document.getElementById('formCambioPassword').style.display = 'block';
+    }
+    function ocultarCambioPassword() {
+        document.getElementById('formCambioPassword').style.display = 'none';
+        document.getElementById('vistaPerfil').style.display = 'block';
+    }
+</script>

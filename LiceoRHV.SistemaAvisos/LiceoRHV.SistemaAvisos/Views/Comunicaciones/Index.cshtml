@@ -1,0 +1,176 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.Comunicacion>
+@{
+    ViewData["Title"] = "Comunicaciones";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Comunicaciones</h2>
+            <p>Avisos y circulares institucionales.</p>
+        </div>
+        <a asp-action="Create" class="btn-nuevo-usuario">+ Nueva comunicación</a>
+    </div>
+
+    @if (TempData["MensajeComunicacion"] != null)
+    {
+        <p class="mensaje-exito">@TempData["MensajeComunicacion"]</p>
+    }
+    <form method="get" asp-action="Index" class="filtros-listado">
+        <div class="filtro-campo">
+            <label>Título</label>
+            <input type="text" name="titulo" value="@ViewBag.FiltroTitulo" placeholder="Buscar por título" />
+        </div>
+
+        @{
+            string filtroTipoActual = ViewBag.FiltroTipo as string ?? "";
+            string filtroEstadoActual = ViewBag.FiltroEstado as string ?? "";
+        }
+
+        <div class="filtro-campo">
+            <label>Tipo</label>
+            <select name="tipo">
+                <option value="" selected="@(filtroTipoActual == "" ? "selected" : null)">Todos</option>
+                <option value="Aviso" selected="@(filtroTipoActual == "Aviso" ? "selected" : null)">Aviso</option>
+                <option value="Circular" selected="@(filtroTipoActual == "Circular" ? "selected" : null)">Circular</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Público</label>
+            <select name="rolId" asp-items="ViewBag.RolesFiltro">
+                <option value="">Todos</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Categoría</label>
+            <select name="categoriaId" asp-items="ViewBag.CategoriasFiltro">
+                <option value="">Todas</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Estado</label>
+            <select name="estado">
+                <option value="" selected="@(filtroEstadoActual == "" ? "selected" : null)">Todos</option>
+                <option value="Borrador" selected="@(filtroEstadoActual == "Borrador" ? "selected" : null)">Borrador</option>
+                <option value="Publicada" selected="@(filtroEstadoActual == "Publicada" ? "selected" : null)">Publicada</option>
+                <option value="Vencida" selected="@(filtroEstadoActual == "Vencida" ? "selected" : null)">Vencida</option>
+            </select>
+        </div>
+
+        <div class="filtro-acciones">
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+            <a asp-action="Index" class="btn-limpiar-filtros">Limpiar</a>
+        </div>
+    </form>
+    <div class="tarjeta-listado">
+        @if (Model.Count == 0)
+        {
+            <p class="sin-datos">Todavía no hay comunicaciones creadas.</p>
+        }
+        else
+        {
+            <table class="tabla-institucional">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Tipo</th>
+                        <th>Categorías</th>
+                        <th>Público</th>
+                        <th>Fecha Publicación</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Titulo</td>
+                            <td>@c.Tipo</td>
+                            <td>@(c.Categoria.Any() ? string.Join(", ", c.Categoria.Select(cat => cat.NombreCategoria)) : "—")</td>
+                            <td>@string.Join(", ", c.Rols.Select(r => r.NombreRol))</td>
+                            <td>@(c.FechaPublicacion != null ? c.FechaPublicacion.Value.ToString("dd/MM/yyyy") : "Sin programar")</td>
+                            <td><span class="badge-estado badge-inactiva">@c.Estado</span></td>
+                            <td>
+                                <button type="button" class="btn-ver-usuario" onclick="verComunicacion(@c.ComunicacionId)">
+                                    Ver
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<!-- Modal: Ver comunicación -->
+<div class="modal fade modal-institucional" id="modalVerComunicacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalle de la comunicación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="contenidoModalVerComunicacion">
+                <!-- se llena vía AJAX -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal: Confirmación genérica -->
+<div class="modal fade modal-institucional" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar acción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeConfirmacion" style="margin:0; font-size:14px; color:#33413A;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-guardar-usuario" id="btnConfirmarAccion">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function verComunicacion(id) {
+        fetch('/Comunicaciones/Detalle/' + id)
+            .then(function (response) { return response.text(); })
+            .then(function (html) {
+                document.getElementById('contenidoModalVerComunicacion').innerHTML = html;
+                var modal = new bootstrap.Modal(document.getElementById('modalVerComunicacion'));
+                modal.show();
+            });
+    }
+        function mostrarEdicionComunicacion() {
+        document.getElementById('vistaDetalleComunicacion').style.display = 'none';
+        document.getElementById('formEdicionComunicacion').style.display = 'block';
+    }
+    function ocultarEdicionComunicacion() {
+        document.getElementById('formEdicionComunicacion').style.display = 'none';
+        document.getElementById('vistaDetalleComunicacion').style.display = 'block';
+    }
+
+        var formPendienteConfirmacion = null;
+
+    function confirmarAccion(form, mensaje) {
+        formPendienteConfirmacion = form;
+        document.getElementById('mensajeConfirmacion').textContent = mensaje;
+        var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        modal.show();
+    }
+
+    document.getElementById('btnConfirmarAccion').addEventListener('click', function () {
+        if (formPendienteConfirmacion) {
+            formPendienteConfirmacion.submit();
+        }
+    });
+</script>

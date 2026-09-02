@@ -1,0 +1,118 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.NormativaInterna>
+@{
+    ViewData["Title"] = "Normativa Interna";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Normativa Interna</h2>
+            <p>Documentos y reglamentos institucionales.</p>
+        </div>
+        @if (ViewBag.PuedeGestionar == true)
+        {
+            <a asp-action="Create" class="btn-nuevo-usuario">+ Nueva normativa</a>
+        }
+    </div>
+
+    @if (TempData["MensajeNormativa"] != null)
+    {
+        <p class="mensaje-exito">@TempData["MensajeNormativa"]</p>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <p class="sin-datos">Todavía no hay documentos publicados.</p>
+    }
+    else
+    {
+        <div class="feed-comunicaciones">
+            @foreach (var n in Model)
+            {
+                var extension = System.IO.Path.GetExtension(n.Archivo).ToLower();
+                var esPdf = extension == ".pdf";
+                var icono = esPdf ? "📕" : "📝";
+
+                <div class="tarjeta-normativa">
+                    <div class="normativa-header">
+                        <div class="normativa-icono">@icono</div>
+                        <div class="normativa-info">
+                            <h3>@n.Titulo</h3>
+                            @if (!string.IsNullOrEmpty(n.Descripcion))
+                            {
+                                <p>@n.Descripcion</p>
+                            }
+                            <p class="normativa-fecha">
+                                Publicado el @n.FechaPublicacion.ToString("dd/MM/yyyy")
+                                @if (n.FechaActualizacion != null)
+                                {
+                                    <text> · Actualizado el @n.FechaActualizacion.Value.ToString("dd/MM/yyyy")</text>
+                                }
+                            </p>
+                        </div>
+                    </div>
+
+                    @if (esPdf)
+                    {
+                        <div class="normativa-preview">
+                            <iframe src="@n.Archivo" title="@n.Titulo"></iframe>
+                        </div>
+                    }
+
+                    <div class="normativa-acciones-footer">
+                        <a href="@n.Archivo" target="_blank" class="btn-descargar-normativa">⬇ Descargar</a>
+                        @if (ViewBag.PuedeGestionar == true)
+                        {
+                            <a asp-action="Editar" asp-route-id="@n.NormativaId" class="btn-ver-usuario">Editar</a>
+                            <form asp-action="Eliminar" asp-route-id="@n.NormativaId" method="post" style="display:inline;" id="formEliminar@(n.NormativaId)">
+                                <button type="button" class="btn-inactivar-usuario"
+                                        onclick="confirmarAccion(document.getElementById('formEliminar@(n.NormativaId)'), '¿Eliminar este documento de forma permanente?')">
+                                    Eliminar
+                                </button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@if (ViewBag.PuedeGestionar == true)
+{
+    <!-- Modal: Confirmación genérica -->
+    <div class="modal fade modal-institucional" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensajeConfirmacion" style="margin:0; font-size:14px; color:#33413A;"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-guardar-usuario" id="btnConfirmarAccion">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var formPendienteConfirmacion = null;
+
+        function confirmarAccion(form, mensaje) {
+            formPendienteConfirmacion = form;
+            document.getElementById('mensajeConfirmacion').textContent = mensaje;
+            var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+            modal.show();
+        }
+
+        document.getElementById('btnConfirmarAccion').addEventListener('click', function () {
+            if (formPendienteConfirmacion) {
+                formPendienteConfirmacion.submit();
+            }
+        });
+    </script>
+}

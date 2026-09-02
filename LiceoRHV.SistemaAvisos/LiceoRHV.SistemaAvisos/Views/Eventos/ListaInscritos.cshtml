@@ -1,0 +1,41 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Evento
+@{
+    ViewData["Title"] = "Inscritos";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Inscritos: @Model.Titulo</h2>
+            <p>@Model.Inscripcions.Count inscritos@(Model.CupoMaximo != null ? " de " + Model.CupoMaximo + " cupos" : "")</p>
+        </div>
+        <a asp-action="DescargarInscritosPdf" asp-route-id="@Model.EventoId" class="btn-nuevo-usuario">⬇ Descargar PDF</a>
+    </div>
+
+    <div class="tarjeta-listado">
+        @if (Model.Inscripcions.Count == 0)
+        {
+            <p class="sin-datos">Todavía no hay inscritos.</p>
+        }
+        else
+        {
+            <table class="tabla-institucional">
+                <thead>
+                   
+                    <tr><th>Nombre</th><th>Cédula</th><th>Correo</th><th>Fecha de inscripción</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model.Inscripcions.OrderBy(x => x.FechaInscripcion))
+                    {
+                        <tr>
+                            <td>@i.Usuario.Nombre</td>
+                            <td>@i.Cedula</td>
+                            <td>@i.Usuario.Correo</td>
+                            <td>@i.FechaInscripcion.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Nuevo Evento";
+    var roles = ViewBag.Roles as List<LiceoRHV.SistemaAvisos.Models.Rol>;
+    var categorias = ViewBag.Categorias as List<LiceoRHV.SistemaAvisos.Models.Categorium>;
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Nuevo Evento</h2>
+            <p>Creá un evento institucional.</p>
+        </div>
+    </div>
+
+    @if (ViewBag.ErrorEvento != null)
+    {
+        <p class="mensaje-error">@ViewBag.ErrorEvento</p>
+    }
+
+    <div class="tarjeta-listado" style="padding:24px;">
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="campo">
+                <label for="Titulo">Título</label>
+                <input type="text" id="Titulo" name="Titulo" required />
+            </div>
+
+            <div class="campo">
+                <label for="Descripcion">Descripción</label>
+                <textarea id="Descripcion" name="Descripcion" rows="4"
+                          style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;"></textarea>
+            </div>
+
+            <div class="form-grid-2">
+                <div class="campo">
+                    <label for="FechaEvento">Fecha del evento</label>
+                    <input type="date" id="FechaEvento" name="FechaEvento" required />
+                </div>
+                <div class="campo">
+                    <label for="HoraEvento">Hora del evento</label>
+                    <input type="time" id="HoraEvento" name="HoraEvento" required />
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="Ubicacion">Ubicación</label>
+                <input type="text" id="Ubicacion" name="Ubicacion" />
+            </div>
+
+            <div class="campo">
+                <label class="seleccionar-todos" style="color:#1A2E20;">
+                    <input type="checkbox" id="RequiereInscripcion" name="RequiereInscripcion" value="true"
+                           onchange="document.getElementById('bloqueCupo').style.display = this.checked ? 'block' : 'none';" />
+                    Este evento requiere inscripción
+                </label>
+            </div>
+
+            <div class="campo" id="bloqueCupo" style="display:none;">
+                <label for="CupoMaximo">Cupo máximo (dejalo vacío si es ilimitado)</label>
+                <input type="number" id="CupoMaximo" name="CupoMaximo" min="1" />
+            </div>
+
+            <div class="campo">
+                <label>Público destinatario</label>
+                <div class="selector-opciones">
+                    @foreach (var rol in roles)
+                    {
+                        <label class="opcion-tarjeta chica">
+                            <input type="checkbox" name="rolesSeleccionados" value="@rol.RolId" />
+                            <span class="opcion-contenido"><strong>@rol.NombreRol</strong></span>
+                        </label>
+                    }
+                </div>
+            </div>
+
+            <div class="campo">
+                <label>Categorías (opcional)</label>
+                <div class="selector-opciones">
+                    @foreach (var cat in categorias)
+                    {
+                        <label class="opcion-tarjeta chica">
+                            <input type="checkbox" name="categoriasSeleccionadas" value="@cat.CategoriaId" />
+                            <span class="opcion-contenido"><strong>@cat.NombreCategoria</strong></span>
+                        </label>
+                    }
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="archivos">Adjuntos (PDF o imágenes)</label>
+                <input type="file" id="archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png,.webp" />
+            </div>
+
+            <div class="detalle-footer">
+                <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+                <button type="submit" class="btn-guardar-usuario">Publicar evento</button>
+            </div>
+        </form>
+    </div>
+</div>

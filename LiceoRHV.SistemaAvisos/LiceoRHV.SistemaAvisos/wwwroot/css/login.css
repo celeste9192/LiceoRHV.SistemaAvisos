@@ -1,0 +1,330 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body.login-page {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.login-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Panel izquierdo - institucional */
+.login-brand {
+    flex: 0 0 42%;
+    background: #1F4A30;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+    .login-brand img.escudo {
+        width: 128px;
+        height: auto;
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 2;
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    }
+
+    .login-brand h1 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 10px;
+        line-height: 1.35;
+        position: relative;
+        z-index: 2;
+    }
+
+    .login-brand p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #CFE3D4;
+        margin: 0;
+        max-width: 280px;
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* silueta de montañas decorativa, discreta */
+    .login-brand .monte {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 140px;
+        z-index: 1;
+    }
+
+/* Panel derecho - formulario */
+.login-form-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FBFCFB;
+    padding: 40px;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 360px;
+}
+
+    .login-form-container .eyebrow {
+        font-size: 12px;
+        font-weight: 500;
+        color: #2F6844;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+    }
+
+    .login-form-container h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #1A2E20;
+        margin: 0 0 6px;
+    }
+
+    .login-form-container p.subtitulo {
+        font-size: 14px;
+        color: #6B7D6E;
+        margin: 0 0 32px;
+        line-height: 1.5;
+    }
+
+    .login-form-container label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #1A2E20;
+        margin-bottom: 6px;
+        margin-top: 18px;
+    }
+
+  
+
+    .login-form-container input::placeholder {
+        color: #A9B6AB;
+    }
+
+    .login-form-container input:focus {
+        outline: none;
+        border-color: #2F6844;
+        box-shadow: 0 0 0 3px rgba(47, 104, 68, 0.12);
+    }
+
+.form-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+    .form-options a {
+        font-size: 12.5px;
+        color: #2F6844;
+        text-decoration: none;
+    }
+
+        .form-options a:hover {
+            text-decoration: underline;
+        }
+
+.login-form-container button {
+    width: 100%;
+    background-color: #2F6844;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 14.5px;
+    font-weight: 500;
+    font-family: inherit;
+    margin-top: 26px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+    .login-form-container button:hover {
+        background-color: #24512F;
+    }
+
+.registro-texto {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 13.5px;
+    color: #6B7D6E;
+}
+
+    .registro-texto a {
+        color: #2F6844;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .registro-texto a:hover {
+            text-decoration: underline;
+        }
+
+.login-footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #B4BEB6;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    .login-wrapper {
+        flex-direction: column;
+    }
+
+    .login-brand {
+        flex: 0 0 auto;
+        padding: 32px 24px;
+    }
+
+        .login-brand img.escudo {
+            width: 84px;
+            margin-bottom: 14px;
+        }
+
+        .login-brand h1 {
+            font-size: 18px;
+        }
+
+    .login-form-panel {
+        padding: 32px 24px;
+    }
+}
+.mensaje-error {
+    color: #A32C21;
+    background: #FBE4E2;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    margin-bottom: 16px;
+}
+
+.mensaje-exito {
+    color: #1F4A30;
+    background: #E4F3E6;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    margin-bottom: 16px;
+}
+.campo {
+    margin-top: 14px;
+}
+
+    .campo:first-child {
+        margin-top: 0;
+    }
+
+.login-form-container .campo label {
+    margin-top: 0;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14px;
+    margin-top: 14px;
+}
+
+    .form-grid-2 .campo {
+        margin-top: 0;
+    }
+
+.rol-selector {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.rol-opcion {
+    flex: 1;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+    .rol-opcion input {
+        display: none;
+    }
+
+.rol-card {
+    display: block;
+    border: 1.5px solid #DCE5DD;
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: all 0.15s ease;
+}
+
+    .rol-card strong {
+        display: block;
+        font-size: 14px;
+        color: #1A2E20;
+        margin-bottom: 3px;
+    }
+
+    .rol-card small {
+        display: block;
+        font-size: 11.5px;
+        color: #8A9A8C;
+        line-height: 1.4;
+    }
+
+.rol-opcion:hover .rol-card {
+    border-color: #7FA87A;
+}
+
+.rol-opcion input:checked + .rol-card {
+    border-color: #2F6844;
+    background-color: #EAF3E7;
+}
+
+    .rol-opcion input:checked + .rol-card strong {
+        color: #1F4A30;
+    }
+
+
+
+.login-form-container input[type="text"],
+.login-form-container input[type="email"],
+.login-form-container input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #DCE5DD;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #FFFFFF;
+    transition: border-color 0.15s ease;
+}
+
+    .login-form-container input[type="text"]:focus,
+    .login-form-container input[type="email"]:focus,
+    .login-form-container input[type="password"]:focus {
+        outline: none;
+        border-color: #2F6844;
+        box-shadow: 0 0 0 3px rgba(47, 104, 68, 0.12);
+    }

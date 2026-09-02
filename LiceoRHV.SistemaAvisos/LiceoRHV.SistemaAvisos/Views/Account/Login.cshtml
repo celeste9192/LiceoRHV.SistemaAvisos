@@ -1,0 +1,219 @@
+﻿@{
+    Layout = null;
+    var usuarioRegistro = ViewBag.UsuarioRegistro as LiceoRHV.SistemaAvisos.Models.Usuario;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Liceo Rodrigo Hernández Vargas</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body class="login-page">
+    <div class="login-wrapper">
+        <div class="login-brand">
+            <img src="~/images/escudo.webp" alt="Escudo del Liceo Rodrigo Hernández Vargas" class="escudo" />
+            <h1>Liceo Rodrigo Hernández Vargas</h1>
+            <p>Sistema institucional de avisos y eventos escolares</p>
+            <svg class="monte" viewBox="0 0 500 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="0,140 0,90 80,40 160,80 230,30 320,90 400,50 500,100 500,140" fill="#1A3E27" opacity="0.6" />
+                <polygon points="0,140 0,110 100,70 190,105 280,65 370,110 460,80 500,110 500,140" fill="#153420" opacity="0.7" />
+            </svg>
+        </div>
+
+        <div class="login-form-panel">
+
+            <!-- PANEL: INICIAR SESIÓN -->
+            <div class="login-form-container" id="panelLogin">
+                <p class="eyebrow">Acceso al sistema</p>
+                <h2>Iniciar sesión</h2>
+                <p class="subtitulo">Ingresá tus credenciales institucionales para continuar.</p>
+
+                @if (TempData["RegistroExitoso"] != null)
+                {
+                    <p class="mensaje-exito">@TempData["RegistroExitoso"]</p>
+                }
+                @if (ViewBag.Error != null)
+                {
+                    <p class="mensaje-error">@ViewBag.Error</p>
+                }
+
+                <form method="post" asp-action="Login" autocomplete="off">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="nombre@correo.com" autocomplete="off" />
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="off" />
+                    <div class="form-options" style="justify-content: space-between; align-items: center;">
+                        <label style="font-weight: 400; display: flex; align-items: center; gap: 6px; margin: 0;">
+                            <input type="checkbox" name="recordarme" value="true" style="width: auto;" />
+                            Recordarme
+                        </label>
+                        <a href="#" onclick="mostrarRecuperar(); return false;">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+                <p class="registro-texto">¿No tenés cuenta? <a href="#" onclick="mostrarRegistro(); return false;">Registrate</a></p>
+                <p class="login-footer">© 2026 Liceo Rodrigo Hernández Vargas · Barva, Heredia</p>
+            </div>
+
+            <!-- PANEL: REGISTRO (Padres / Estudiantes) -->
+            <div class="login-form-container" id="panelRegistro" style="display:none;">
+                <p class="eyebrow">Nueva cuenta</p>
+                <h2>Registrate</h2>
+                <p class="subtitulo">Para Padres/Tutores y Estudiantes. Tu cuenta quedará pendiente de aprobación.</p>
+
+                @if (ViewBag.ErrorRegistro != null)
+                {
+                    <p class="mensaje-error">@ViewBag.ErrorRegistro</p>
+                }
+
+                <form method="post" asp-action="Registro" autocomplete="off">
+                    <div class="campo">
+                        <label for="Nombre">Nombre completo</label>
+                        <input type="text" id="Nombre" name="Nombre" value="@usuarioRegistro?.Nombre" autocomplete="off" required />
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="campo">
+                            <label for="Cedula">Cédula</label>
+                            <input type="text" id="Cedula" name="Cedula" value="@usuarioRegistro?.Cedula"
+                                   autocomplete="off" required
+                                   pattern="[0-9\-]{9,12}" title="Solo números y guiones, entre 9 y 12 caracteres" />
+                        </div>
+                        <div class="campo">
+                            <label for="Telefono">Teléfono</label>
+                            <input type="text" id="Telefono" name="Telefono" value="@usuarioRegistro?.Telefono"
+                                   autocomplete="off"
+                                   pattern="[0-9\-]{8,9}" title="Solo números y guiones, entre 8 y 9 caracteres" />
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="Correo">Correo</label>
+                        <input type="email" id="Correo" name="Correo" value="@usuarioRegistro?.Correo" autocomplete="off" required />
+                    </div>
+
+                    <div class="campo">
+                        <label>Sos...</label>
+                        <div class="rol-selector">
+                            <label class="rol-opcion">
+                                <input type="radio" name="RolId" value="@ViewBag.RolEstudianteId"
+                                       @(usuarioRegistro != null && usuarioRegistro.RolId == (int)ViewBag.RolEstudianteId ? "checked" : "") required />
+                                <span class="rol-card">
+                                    <strong>Estudiante</strong>
+                                    <small>Soy alumno del liceo</small>
+                                </span>
+                            </label>
+                            <label class="rol-opcion">
+                                <input type="radio" name="RolId" value="@ViewBag.RolPadreId"
+                                       @(usuarioRegistro != null && usuarioRegistro.RolId == (int)ViewBag.RolPadreId ? "checked" : "") required />
+                                <span class="rol-card">
+                                    <strong>Padre/Tutor</strong>
+                                    <small>Soy responsable de un estudiante</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="campo">
+                            <label for="PasswordHash">Contraseña</label>
+                            <input type="password" id="PasswordHash" name="PasswordHash" autocomplete="new-password" minlength="8" required />
+                        </div>
+                        <div class="campo">
+                            <label for="confirmarPassword">Confirmar contraseña</label>
+                            <input type="password" id="confirmarPassword" name="confirmarPassword" autocomplete="new-password" minlength="8" required />
+                        </div>
+                    </div>
+
+                    <button type="submit">Crear cuenta</button>
+                </form>
+                <p class="registro-texto">¿Ya tenés cuenta? <a href="#" onclick="mostrarLogin(); return false;">Iniciar sesión</a></p>
+            </div>
+
+            <!-- PANEL: RECUPERAR CONTRASEÑA -->
+            <div class="login-form-container" id="panelRecuperar" style="display:none;">
+                <p class="eyebrow">Recuperar acceso</p>
+                <h2>¿Olvidaste tu contraseña?</h2>
+
+                @if (ViewBag.PasoRecuperar != 2)
+                {
+                    <p class="subtitulo">Ingresá tu correo y te enviamos un código de verificación.</p>
+
+                    @if (ViewBag.ErrorRecuperar != null)
+                    {
+                        <p class="mensaje-error">@ViewBag.ErrorRecuperar</p>
+                    }
+
+                    <form method="post" asp-action="SolicitarRecuperacion" autocomplete="off">
+                        <label for="correoRecuperar">Correo</label>
+                        <input type="email" id="correoRecuperar" name="correo" placeholder="nombre@correo.com" autocomplete="off" required />
+                        <button type="submit">Enviar código</button>
+                    </form>
+                }
+                else
+                {
+                    <p class="subtitulo">@ViewBag.MensajeRecuperar</p>
+
+                    @if (ViewBag.ErrorRecuperar != null)
+                    {
+                        <p class="mensaje-error">@ViewBag.ErrorRecuperar</p>
+                    }
+
+                    <form method="post" asp-action="ConfirmarRecuperacion" autocomplete="off">
+                        <input type="hidden" name="correo" value="@ViewBag.CorreoRecuperar" />
+
+                        <div class="campo">
+                            <label for="codigo">Código de verificación</label>
+                            <input type="text" id="codigo" name="codigo" maxlength="6" autocomplete="off" required />
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="campo">
+                                <label for="nuevaPassword">Nueva contraseña</label>
+                                <input type="password" id="nuevaPassword" name="nuevaPassword" autocomplete="new-password" minlength="8" required />
+                            </div>
+                            <div class="campo">
+                                <label for="confirmarPasswordRecuperar">Confirmar contraseña</label>
+                                <input type="password" id="confirmarPasswordRecuperar" name="confirmarPassword" autocomplete="new-password" minlength="8" required />
+                            </div>
+                        </div>
+
+                        <button type="submit">Cambiar contraseña</button>
+                    </form>
+                }
+
+                <p class="registro-texto">¿Ya tenés el acceso? <a href="#" onclick="mostrarLogin(); return false;">Iniciar sesión</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function mostrarRegistro() {
+            document.getElementById('panelLogin').style.display = 'none';
+            document.getElementById('panelRegistro').style.display = 'block';
+            document.getElementById('panelRecuperar').style.display = 'none';
+        }
+        function mostrarLogin() {
+            document.getElementById('panelRegistro').style.display = 'none';
+            document.getElementById('panelRecuperar').style.display = 'none';
+            document.getElementById('panelLogin').style.display = 'block';
+        }
+        function mostrarRecuperar() {
+            document.getElementById('panelLogin').style.display = 'none';
+            document.getElementById('panelRegistro').style.display = 'none';
+            document.getElementById('panelRecuperar').style.display = 'block';
+        }
+
+        @if (ViewBag.MostrarRegistro == true)
+        {
+                <text>mostrarRegistro();</text>
+        }
+        @if (ViewBag.MostrarRecuperar == true)
+        {
+                <text>mostrarRecuperar();</text>
+        }
+    </script>
+</body>
+</html>

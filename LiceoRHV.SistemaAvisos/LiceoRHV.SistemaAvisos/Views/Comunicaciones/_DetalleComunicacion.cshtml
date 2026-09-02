@@ -1,0 +1,157 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Comunicacion
+@{
+    var todosRoles = ViewBag.Roles as List<LiceoRHV.SistemaAvisos.Models.Rol>;
+    var todasCategorias = ViewBag.Categorias as List<LiceoRHV.SistemaAvisos.Models.Categorium>;
+    var rolesSeleccionadosIds = Model.Rols.Select(r => r.RolId).ToHashSet();
+    var categoriasSeleccionadasIds = Model.Categoria.Select(c => c.CategoriaId).ToHashSet();
+}
+
+<div id="vistaDetalleComunicacion">
+    <div class="detalle-usuario">
+        <div class="detalle-header">
+            <h5>@Model.Titulo</h5>
+            <span class="badge-estado badge-inactiva">@Model.Estado</span>
+        </div>
+
+        <div class="detalle-grid-vertical">
+            <div>
+                <label>Tipo</label>
+                <p>@Model.Tipo</p>
+            </div>
+            <div>
+                <label>Contenido</label>
+                <p>@Model.Contenido</p>
+            </div>
+            <div>
+                <label>Público destinatario</label>
+                <p>@string.Join(", ", Model.Rols.Select(r => r.NombreRol))</p>
+            </div>
+            <div>
+                <label>Categorías</label>
+                <p>@(Model.Categoria.Any() ? string.Join(", ", Model.Categoria.Select(c => c.NombreCategoria)) : "—")</p>
+            </div>
+            <div>
+                <label>Fecha de publicación</label>
+                <p>@(Model.FechaPublicacion != null ? Model.FechaPublicacion.Value.ToString("dd/MM/yyyy HH:mm") : "Sin programar")</p>
+            </div>
+            <div>
+                <label>Fecha de vencimiento</label>
+                <p>@(Model.FechaVencimiento != null ? Model.FechaVencimiento.Value.ToString("dd/MM/yyyy HH:mm") : "—")</p>
+            </div>
+            <div>
+                <label>Creado por</label>
+                <p>@Model.CreadoPorUsuario?.Nombre</p>
+            </div>
+        </div>
+
+        @if (Model.ArchivoComunicacions.Any())
+        {
+            <div class="campo" style="margin-top:18px;">
+                <label style="font-size:12px; color:#8A9A8C; text-transform:uppercase; display:block; margin-bottom:6px;">
+                    Archivos adjuntos
+                </label>
+                <ul style="margin:0; padding-left:18px; font-size:13.5px;">
+                    @foreach (var archivo in Model.ArchivoComunicacions)
+                    {
+                        <li><a href="@archivo.Ruta" target="_blank">@archivo.NombreArchivo</a></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+    <div class="detalle-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="mostrarEdicionComunicacion()">
+            Editar
+        </button>
+
+        <form asp-controller="Comunicaciones" asp-action="ToggleDestacada" method="post" id="formToggleDestacada">
+            <input type="hidden" name="id" value="@Model.ComunicacionId" />
+            <button type="button" class="btn-guardar-usuario"
+                    onclick="confirmarAccion(document.getElementById('formToggleDestacada'), '@(Model.Destacada ? "¿Quitar esta comunicación de destacadas?" : "¿Marcar esta comunicación como destacada?")')">
+                @(Model.Destacada ? "Quitar destacada" : "Marcar como destacada")
+            </button>
+        </form>
+
+        <form asp-controller="Comunicaciones" asp-action="Eliminar" method="post" id="formEliminarComunicacion">
+            <input type="hidden" name="id" value="@Model.ComunicacionId" />
+            <button type="button" class="btn-inactivar-usuario"
+                    onclick="confirmarAccion(document.getElementById('formEliminarComunicacion'), '¿Eliminar esta comunicación de forma permanente? Esta acción no se puede deshacer.')">
+                Eliminar
+            </button>
+        </form>
+    </div>
+</div>
+<div id="formEdicionComunicacion" style="display:none;">
+    <form asp-controller="Comunicaciones" asp-action="EditarComunicacion" method="post">
+        <input type="hidden" name="ComunicacionId" value="@Model.ComunicacionId" />
+
+        <div class="campo">
+            <label>Título</label>
+            <input type="text" name="Titulo" value="@Model.Titulo" required />
+        </div>
+
+        <div class="campo">
+            <label>Contenido</label>
+            <textarea name="Contenido" rows="5" required
+                      style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;">@Model.Contenido</textarea>
+        </div>
+
+        <div class="campo">
+            <label>Tipo</label>
+            <div class="selector-opciones">
+                <label class="opcion-tarjeta">
+                    <input type="radio" name="Tipo" value="Aviso" @(Model.Tipo == "Aviso" ? "checked" : "") />
+                    <span class="opcion-contenido"><strong>Aviso</strong></span>
+                </label>
+                <label class="opcion-tarjeta">
+                    <input type="radio" name="Tipo" value="Circular" @(Model.Tipo == "Circular" ? "checked" : "") />
+                    <span class="opcion-contenido"><strong>Circular</strong></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-grid-2">
+            <div class="campo">
+                <label>Fecha de publicación</label>
+                <input type="datetime-local" name="FechaPublicacion" value="@(Model.FechaPublicacion?.ToString("yyyy-MM-ddTHH:mm"))" />
+            </div>
+            <div class="campo">
+                <label>Fecha de vencimiento</label>
+                <input type="datetime-local" name="FechaVencimiento" value="@(Model.FechaVencimiento?.ToString("yyyy-MM-ddTHH:mm"))" />
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Público destinatario</label>
+            <div class="selector-opciones">
+                @foreach (var rol in todosRoles)
+                {
+                    <label class="opcion-tarjeta chica">
+                        <input type="checkbox" name="rolesSeleccionados" value="@rol.RolId"
+                               @(rolesSeleccionadosIds.Contains(rol.RolId) ? "checked" : "") />
+                        <span class="opcion-contenido"><strong>@rol.NombreRol</strong></span>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Categorías</label>
+            <div class="selector-opciones">
+                @foreach (var cat in todasCategorias)
+                {
+                    <label class="opcion-tarjeta chica">
+                        <input type="checkbox" name="categoriasSeleccionadas" value="@cat.CategoriaId"
+                               @(categoriasSeleccionadasIds.Contains(cat.CategoriaId) ? "checked" : "") />
+                        <span class="opcion-contenido"><strong>@cat.NombreCategoria</strong></span>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <div class="detalle-footer">
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="ocultarEdicionComunicacion()">Cancelar</button>
+            <button type="submit" class="btn-guardar-usuario">Guardar cambios</button>
+        </div>
+    </form>
+</div>

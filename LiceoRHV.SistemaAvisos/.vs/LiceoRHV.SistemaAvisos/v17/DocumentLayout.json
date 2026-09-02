@@ -1,0 +1,659 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\eventos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\eventos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\eventos\\listainscritos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\eventos\\listainscritos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\eventos\\_detalleevento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\eventos\\_detalleevento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\inscripcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\inscripcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\eventos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\eventos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\archivoevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\archivoevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\normativa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\normativa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\wwwroot\\css\\listados.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\wwwroot\\css\\listados.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\normativa\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\normativa\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\normativa\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\normativa\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\normativacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\normativacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\normativainterna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\normativainterna.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\comunicaciones\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\comunicaciones\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\comunicacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\comunicacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\comunicaciones\\_detallecomunicacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\comunicaciones\\_detallecomunicacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\comunicaciones\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\comunicaciones\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\categorium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\categorium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\comunicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\comunicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\account\\perfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\account\\perfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\usuarios\\_detalleusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\usuarios\\_detalleusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\wwwroot\\css\\institucional.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\wwwroot\\css\\institucional.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\views\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\views\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|c:\\users\\maria\\desktop\\tcu\\liceorhv.sistemaavisos\\liceorhv.sistemaavisos\\data\\liceorhvcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E71711-0992-4A68-BB88-FD64EFA9F1B8}|LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj|solutionrelative:liceorhv.sistemaavisos\\data\\liceorhvcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ListaInscritos.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\ListaInscritos.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\ListaInscritos.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\ListaInscritos.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\ListaInscritos.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T19:23:28.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_DetalleEvento.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\_DetalleEvento.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\_DetalleEvento.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\_DetalleEvento.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\_DetalleEvento.cshtml",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAJIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T19:23:05.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\Create.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\Create.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\Create.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAkwGIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T19:22:42.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\Index.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Eventos\\Index.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Eventos\\Index.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAwwDYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T19:22:18.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EventosController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\EventosController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\EventosController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\EventosController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\EventosController.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAAAA4BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T19:21:41.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Inscripcion.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Inscripcion.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Inscripcion.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Inscripcion.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Inscripcion.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwBMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T19:15:49.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ArchivoEvento.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\ArchivoEvento.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\ArchivoEvento.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\ArchivoEvento.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\ArchivoEvento.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T19:11:08.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Evento.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Evento.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Evento.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Evento.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Evento.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T19:09:57.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Editar.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Editar.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Editar.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Editar.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Editar.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowCwAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T18:46:10.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Create.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Create.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Create.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowCkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T18:45:37.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Index.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Normativa\\Index.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Normativa\\Index.cshtml",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAwwHUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-31T18:44:28.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NormativaController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\NormativaController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\NormativaController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\NormativaController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\NormativaController.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAqwLUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T18:43:39.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NormativaInterna.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\NormativaInterna.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\NormativaInterna.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\NormativaInterna.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\NormativaInterna.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-31T18:40:18.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAkwCAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-30T03:26:20.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_DetalleComunicacion.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\_DetalleComunicacion.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\_DetalleComunicacion.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\_DetalleComunicacion.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\_DetalleComunicacion.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-30T03:21:50.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Categorium.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Categorium.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Categorium.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Categorium.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Categorium.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-30T03:12:56.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Create.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Create.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Create.cshtml",
+              "ViewState": "AgIAALYAAAAAAAAAAAAIwM0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-29T21:11:50.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Index.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Index.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Comunicaciones\\Index.cshtml",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAwDUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-29T21:06:38.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Comunicacion.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Comunicacion.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Comunicacion.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Comunicacion.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Comunicacion.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAswCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T21:05:16.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ComunicacionesController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\ComunicacionesController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\ComunicacionesController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\ComunicacionesController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\ComunicacionesController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAIwEoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T21:04:14.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Perfil.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Account\\Perfil.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Account\\Perfil.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Account\\Perfil.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Account\\Perfil.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAwJUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-29T20:23:27.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Usuario.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Usuario.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAkwA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T02:26:31.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_DetalleUsuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\_DetalleUsuario.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\_DetalleUsuario.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\_DetalleUsuario.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\_DetalleUsuario.cshtml",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAwGwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-27T21:10:17.627Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "listados.css",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\listados.css",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\listados.css",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\listados.css",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\listados.css",
+              "ViewState": "AgIAADkDAAAAAAAAAAAAwFADAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-27T20:32:43.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-27T20:31:48.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "institucional.css",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\institucional.css",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\institucional.css",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\institucional.css",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\institucional.css",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-27T20:25:09.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAwDEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-27T02:27:47.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAwNoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-27T01:42:05.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAF4BAAAAAAAAAAD4v2oBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-27T01:40:37.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "login.css",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\login.css",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\login.css",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\wwwroot\\css\\login.css",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\wwwroot\\css\\login.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-27T01:39:27.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Create.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Create.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-27T01:27:51.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Index.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Index.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Usuarios\\Index.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDQAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-27T01:25:19.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowA4AAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-27T01:24:41.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Rol.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Models\\Rol.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Models\\Rol.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Models\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-26T00:01:51.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAwwLMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-26T00:01:19.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Program.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Program.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Program.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Program.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T23:55:38.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "LiceoRHVContext.cs",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Data\\LiceoRHVContext.cs",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\Data\\LiceoRHVContext.cs",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\Data\\LiceoRHVContext.cs",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\Data\\LiceoRHVContext.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T23:53:51.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\appsettings.json",
+              "RelativeDocumentMoniker": "LiceoRHV.SistemaAvisos\\appsettings.json",
+              "ToolTip": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\appsettings.json",
+              "RelativeToolTip": "LiceoRHV.SistemaAvisos\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-25T23:52:12.262Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

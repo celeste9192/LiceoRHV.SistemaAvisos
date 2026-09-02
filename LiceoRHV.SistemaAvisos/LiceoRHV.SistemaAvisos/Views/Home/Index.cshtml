@@ -1,0 +1,180 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.Comunicacion>
+@{
+    ViewData["Title"] = "Inicio";
+    var eventos = ViewBag.Eventos as List<LiceoRHV.SistemaAvisos.Models.Evento>;
+    int usuarioIdActual = ViewBag.UsuarioIdActual != null ? (int)ViewBag.UsuarioIdActual : 0;
+}
+
+@functions {
+    string ObtenerIniciales(string? nombre)
+    {
+        if (string.IsNullOrWhiteSpace(nombre)) return "?";
+        var partes = nombre.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (partes.Length == 1) return partes[0].Substring(0, Math.Min(2, partes[0].Length)).ToUpper();
+        return (partes[0][0].ToString() + partes[1][0].ToString()).ToUpper();
+    }
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Avisos y Circulares</h2>
+            <p>Comunicaciones publicadas para vos.</p>
+        </div>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <p class="sin-datos">No hay comunicaciones publicadas por el momento.</p>
+    }
+    else
+    {
+        <div class="feed-comunicaciones">
+            @foreach (var c in Model)
+            {
+                var imagenes = c.ArchivoComunicacions.Where(a => a.TipoArchivo != null && a.TipoArchivo.StartsWith("image/")).ToList();
+                var otrosArchivos = c.ArchivoComunicacions.Where(a => a.TipoArchivo == null || !a.TipoArchivo.StartsWith("image/")).ToList();
+                var claseGaleria = "galeria-" + Math.Min(imagenes.Count, 4);
+
+                <div class="tarjeta-comunicacion @(c.Tipo == "Circular" ? "tipo-circular-borde" : "")">
+                    <div class="tarjeta-comunicacion-autor">
+                        <div class="avatar-autor">@ObtenerIniciales(c.CreadoPorUsuario?.Nombre)</div>
+                        <div>
+                            <p class="autor-nombre">@c.CreadoPorUsuario?.Nombre</p>
+                            <p class="autor-fecha">@((c.FechaPublicacion ?? c.FechaCreacion).ToString("dd/MM/yyyy • HH:mm"))</p>
+                        </div>
+                        <span class="badge-tipo-@c.Tipo.ToLower()" style="margin-left:auto;">@c.Tipo</span>
+                    </div>
+
+                    @if (c.Destacada)
+                    {
+                        <span class="badge-destacada" style="margin-bottom:10px; display:inline-block;">Destacada</span>
+                    }
+
+                    <h3>@c.Titulo</h3>
+                    <p>@c.Contenido</p>
+
+                    @if (imagenes.Any())
+                    {
+                        <div class="galeria-comunicacion @claseGaleria">
+                            @foreach (var img in imagenes)
+                            {
+                                <a href="@img.Ruta" target="_blank">
+                                    <img src="@img.Ruta" alt="@img.NombreArchivo" loading="lazy" />
+                                </a>
+                            }
+                        </div>
+                    }
+
+                    @if (c.Categoria.Any())
+                    {
+                        <div class="tarjeta-comunicacion-categorias">
+                            @foreach (var cat in c.Categoria)
+                            {
+                                <span class="chip-categoria">@cat.NombreCategoria</span>
+                            }
+                        </div>
+                    }
+
+                    @if (otrosArchivos.Any())
+                    {
+                        <div class="tarjeta-comunicacion-adjuntos">
+                            @foreach (var archivo in otrosArchivos)
+                            {
+                                <a href="@archivo.Ruta" target="_blank" class="chip-archivo">📄 @archivo.NombreArchivo</a>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@if (TempData["MensajeEvento"] != null)
+{
+    <p class="mensaje-exito" style="margin-top:16px;">@TempData["MensajeEvento"]</p>
+}
+
+@if (eventos != null && eventos.Any())
+{
+    <div class="pagina-listado" style="margin-top:26px;">
+        <div class="encabezado-listado">
+            <div><h2>Próximos Eventos</h2></div>
+        </div>
+
+        <div class="feed-comunicaciones">
+            @foreach (var e in eventos)
+            {
+                bool yaInscrito = e.Inscripcions.Any(i => i.UsuarioId == usuarioIdActual);
+                bool cupoLleno = e.CupoMaximo != null && e.Inscripcions.Count >= e.CupoMaximo;
+                var errorEvento = TempData["ErrorEvento" + e.EventoId] as string;
+
+                var imagenesEvento = e.ArchivoEventos.Where(a => a.TipoArchivo != null && a.TipoArchivo.StartsWith("image/")).ToList();
+                var pdfsEvento = e.ArchivoEventos.Where(a => a.TipoArchivo == "application/pdf").ToList();
+                var claseGaleriaEvento = "galeria-" + Math.Min(imagenesEvento.Count, 4);
+
+                <div class="tarjeta-comunicacion">
+                    <h3>@e.Titulo</h3>
+                    <p>@e.Descripcion</p>
+                    <p class="normativa-fecha">
+                        📅 @e.FechaEvento.ToString("dd/MM/yyyy") - @e.HoraEvento.ToString("HH:mm")
+                        @if (!string.IsNullOrEmpty(e.Ubicacion))
+                        {
+                            <text> · 📍 @e.Ubicacion</text>
+                        }
+                    </p>
+
+                    @if (imagenesEvento.Any())
+                    {
+                        <div class="galeria-comunicacion @claseGaleriaEvento">
+                            @foreach (var img in imagenesEvento)
+                            {
+                                <a href="@img.Ruta" target="_blank"><img src="@img.Ruta" alt="@img.NombreArchivo" loading="lazy" /></a>
+                            }
+                        </div>
+                    }
+
+                    @foreach (var pdf in pdfsEvento)
+                    {
+                        <div class="normativa-preview">
+                            <iframe src="@pdf.Ruta" title="@pdf.NombreArchivo"></iframe>
+                        </div>
+                    }
+
+                    @if (e.RequiereInscripcion)
+                    {
+                        @if (errorEvento != null)
+                        {
+                            <p class="mensaje-error" style="margin-top:10px;">@errorEvento</p>
+                        }
+
+                        @if (yaInscrito)
+                        {
+                            <div style="margin-top:10px; display:flex; align-items:center; gap:10px;">
+                                <span class="badge-estado badge-activa">Ya estás inscrito</span>
+                                <form asp-controller="Eventos" asp-action="CancelarInscripcion" method="post">
+                                    <input type="hidden" name="id" value="@e.EventoId" />
+                                    <button type="submit" class="btn-inactivar-usuario" style="font-size:12px; padding:4px 12px;">
+                                        Cancelar inscripción
+                                    </button>
+                                </form>
+                            </div>
+                        }
+                        else if (cupoLleno)
+                        {
+                            <span class="badge-estado badge-rechazada" style="margin-top:10px; display:inline-block;">Cupo lleno</span>
+                        }
+                        else
+                        {
+                            <form asp-controller="Eventos" asp-action="Inscribirse" method="post" style="margin-top:12px;">
+                                <input type="hidden" name="id" value="@e.EventoId" />
+                                <button type="submit" class="btn-guardar-usuario">Inscribirme</button>
+                            </form>
+                        }
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}

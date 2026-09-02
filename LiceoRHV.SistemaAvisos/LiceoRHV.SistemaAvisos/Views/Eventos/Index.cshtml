@@ -1,0 +1,167 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.Evento>
+@{
+    ViewData["Title"] = "Eventos";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Eventos</h2>
+            <p>Eventos institucionales.</p>
+        </div>
+        <a asp-action="Create" class="btn-nuevo-usuario">+ Nuevo evento</a>
+    </div>
+
+    @if (TempData["MensajeEvento"] != null)
+    {
+        <p class="mensaje-exito">@TempData["MensajeEvento"]</p>
+    }
+    <form method="get" asp-action="Index" class="filtros-listado">
+        <div class="filtro-campo">
+            <label>Título</label>
+            <input type="text" name="titulo" value="@ViewBag.FiltroTitulo" placeholder="Buscar por título" />
+        </div>
+
+        <div class="filtro-campo">
+            <label>Público</label>
+            <select name="rolId" asp-items="ViewBag.RolesFiltro">
+                <option value="">Todos</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Categoría</label>
+            <select name="categoriaId" asp-items="ViewBag.CategoriasFiltro">
+                <option value="">Todas</option>
+            </select>
+        </div>
+
+        @{
+            string filtroEstadoActual = ViewBag.FiltroEstado as string ?? "";
+        }
+        <div class="filtro-campo">
+            <label>Estado</label>
+            <select name="estado">
+                <option value="" selected="@(filtroEstadoActual == "" ? "selected" : null)">Todos</option>
+                <option value="Publicado" selected="@(filtroEstadoActual == "Publicado" ? "selected" : null)">Publicado</option>
+                <option value="Finalizado" selected="@(filtroEstadoActual == "Finalizado" ? "selected" : null)">Finalizado</option>
+            </select>
+        </div>
+
+        <div class="filtro-acciones">
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+            <a asp-action="Index" class="btn-limpiar-filtros">Limpiar</a>
+        </div>
+    </form>
+
+    <div class="tarjeta-listado">
+        @if (Model.Count == 0)
+        {
+            <p class="sin-datos">Todavía no hay eventos creados.</p>
+        }
+        else
+        {
+            <table class="tabla-institucional">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Fecha</th>
+                        <th>Público</th>
+                        <th>Inscripción</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var e in Model)
+                    {
+                        <tr>
+                            <td>@e.Titulo</td>
+                            <td>@e.FechaEvento.ToString("dd/MM/yyyy") - @e.HoraEvento.ToString("HH:mm")</td>
+                            <td>@string.Join(", ", e.Rols.Select(r => r.NombreRol))</td>
+                            <td>
+                                @if (e.RequiereInscripcion)
+                                {
+                                    <text>@e.Inscripcions.Count@(e.CupoMaximo != null ? " / " + e.CupoMaximo : "")</text>
+                                }
+                                else
+                                {
+                                    <text>No requiere</text>
+                                }
+                            </td>
+                            <td><span class="badge-estado badge-inactiva">@e.Estado</span></td>
+                            <td>
+                                <button type="button" class="btn-ver-usuario" onclick="verEvento(@e.EventoId)">Ver</button>
+                                @if (e.RequiereInscripcion)
+                                {
+                                    <a asp-action="ListaInscritos" asp-route-id="@e.EventoId" class="btn-ver-usuario">Inscritos</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<!-- Modal: Ver evento -->
+<div class="modal fade modal-institucional" id="modalVerEvento" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalle del evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="contenidoModalVerEvento"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Confirmación genérica -->
+<div class="modal fade modal-institucional" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar acción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeConfirmacion" style="margin:0; font-size:14px; color:#33413A;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-guardar-usuario" id="btnConfirmarAccion">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function verEvento(id) {
+        fetch('/Eventos/Detalle/' + id)
+            .then(function (r) { return r.text(); })
+            .then(function (html) {
+                document.getElementById('contenidoModalVerEvento').innerHTML = html;
+                new bootstrap.Modal(document.getElementById('modalVerEvento')).show();
+            });
+    }
+    function mostrarEdicionEvento() {
+        document.getElementById('vistaDetalleEvento').style.display = 'none';
+        document.getElementById('formEdicionEvento').style.display = 'block';
+    }
+    function ocultarEdicionEvento() {
+        document.getElementById('formEdicionEvento').style.display = 'none';
+        document.getElementById('vistaDetalleEvento').style.display = 'block';
+    }
+
+    var formPendienteConfirmacion = null;
+    function confirmarAccion(form, mensaje) {
+        formPendienteConfirmacion = form;
+        document.getElementById('mensajeConfirmacion').textContent = mensaje;
+        new bootstrap.Modal(document.getElementById('modalConfirmacion')).show();
+    }
+    document.getElementById('btnConfirmarAccion').addEventListener('click', function () {
+        if (formPendienteConfirmacion) formPendienteConfirmacion.submit();
+    });
+</script>

@@ -1,0 +1,138 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Usuario
+@{
+    var claseBadge = Model.Estado switch
+    {
+        "Activa" => "badge-activa",
+        "Pendiente" => "badge-pendiente",
+        "Rechazada" => "badge-rechazada",
+        _ => "badge-inactiva"
+    };
+    bool esPendiente = Model.Estado == "Pendiente";
+    bool esRechazada = Model.Estado == "Rechazada";
+    bool esActivaOInactiva = Model.Estado == "Activa" || Model.Estado == "Inactiva";
+    var mensajeConfirmacion = Model.Estado == "Activa"
+        ? "¿Seguro que querés inactivar a este usuario?"
+        : "¿Seguro que querés activar a este usuario?";
+}
+
+<div id="vistaDetalleUsuario">
+    <div class="detalle-usuario">
+        <div class="detalle-header">
+            <h5>@Model.Nombre</h5>
+            <span class="badge-estado @claseBadge">@Model.Estado</span>
+        </div>
+
+        <div class="detalle-grid">
+            <div>
+                <label>Cédula</label>
+                <p>@Model.Cedula</p>
+            </div>
+            <div>
+                <label>Correo</label>
+                <p>@Model.Correo</p>
+            </div>
+            <div>
+                <label>Teléfono</label>
+                <p>@(string.IsNullOrEmpty(Model.Telefono) ? "—" : Model.Telefono)</p>
+            </div>
+            <div>
+                <label>Rol</label>
+                <p>@Model.Rol?.NombreRol</p>
+            </div>
+            <div>
+                <label>Fecha de registro</label>
+                <p>@Model.FechaRegistro.ToString("dd/MM/yyyy")</p>
+            </div>
+            @if (Model.FechaRevision != null)
+            {
+                <div>
+                    <label>Fecha de revisión</label>
+                    <p>@Model.FechaRevision?.ToString("dd/MM/yyyy")</p>
+                </div>
+            }
+        </div>
+
+        @if (esRechazada && !string.IsNullOrEmpty(Model.MotivoRechazo))
+        {
+            <div class="detalle-motivo">
+                <label>Motivo de rechazo</label>
+                <p>@Model.MotivoRechazo</p>
+            </div>
+        }
+    </div>
+    <div class="detalle-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="mostrarEdicion()">
+            Editar
+        </button>
+
+        @if (esPendiente)
+        {
+            <form asp-controller="Usuarios" asp-action="CambiarEstado" method="post" id="formAprobarUsuario">
+                <input type="hidden" name="id" value="@Model.UsuarioId" />
+                <input type="hidden" name="nuevoEstado" value="Activa" />
+                <button type="button" class="btn-guardar-usuario"
+                        onclick="confirmarAccion(document.getElementById('formAprobarUsuario'), '¿Aprobar esta cuenta y activarla?')">
+                    Aprobar
+                </button>
+            </form>
+        }
+        else if (esRechazada)
+        {
+            <form asp-controller="Usuarios" asp-action="CambiarEstado" method="post" id="formAprobarUsuario">
+                <input type="hidden" name="id" value="@Model.UsuarioId" />
+                <input type="hidden" name="nuevoEstado" value="Activa" />
+                <button type="button" class="btn-guardar-usuario"
+                        onclick="confirmarAccion(document.getElementById('formAprobarUsuario'), '¿Aprobar esta cuenta y activarla?')">
+                    Aprobar
+                </button>
+            </form>
+        }
+        else if (esActivaOInactiva)
+        {
+            <form asp-controller="Usuarios" asp-action="CambiarEstado" method="post" id="formCambiarEstadoUsuario">
+                <input type="hidden" name="id" value="@Model.UsuarioId" />
+                <input type="hidden" name="nuevoEstado" value="@(Model.Estado == "Activa" ? "Inactiva" : "Activa")" />
+                <button type="button"
+                        class="@(Model.Estado == "Activa" ? "btn-inactivar-usuario" : "btn-guardar-usuario")"
+                        onclick="confirmarAccion(document.getElementById('formCambiarEstadoUsuario'), '@mensajeConfirmacion')">
+                    @(Model.Estado == "Activa" ? "Inactivar usuario" : "Activar usuario")
+                </button>
+            </form>
+        }
+
+        @if (!esRechazada)
+        {
+            <button type="button" class="btn-inactivar-usuario" onclick="abrirModalRechazo(@Model.UsuarioId)">
+                Rechazar
+            </button>
+        }
+    </div>
+</div>
+
+<div id="formEdicionUsuario" style="display:none;">
+    <form asp-controller="Usuarios" asp-action="EditarUsuario" method="post" autocomplete="off">
+        <input type="hidden" name="UsuarioId" value="@Model.UsuarioId" />
+
+        <label>Nombre completo</label>
+        <input type="text" name="Nombre" value="@Model.Nombre" autocomplete="off" required />
+
+        <label>Cédula</label>
+        <input type="text" name="Cedula" value="@Model.Cedula" autocomplete="off" required
+               pattern="[0-9\-]{9,12}" title="Solo números y guiones, entre 9 y 12 caracteres" />
+
+        <label>Correo</label>
+        <input type="email" name="Correo" value="@Model.Correo" autocomplete="off" required />
+
+        <label>Teléfono</label>
+        <input type="text" name="Telefono" value="@Model.Telefono" autocomplete="off"
+               pattern="[0-9\-]{8,9}" title="Solo números y guiones, entre 8 y 9 caracteres" />
+
+        <label>Rol</label>
+        <select name="RolId" asp-items="ViewBag.Roles" autocomplete="off"></select>
+
+        <div class="detalle-footer">
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="ocultarEdicion()">Cancelar</button>
+            <button type="submit" class="btn-guardar-usuario">Guardar cambios</button>
+        </div>
+    </form>
+</div>

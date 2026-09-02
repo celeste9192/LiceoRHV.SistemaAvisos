@@ -1,0 +1,206 @@
+﻿@{
+    ViewData["Title"] = "Nueva Comunicación";
+    var roles = ViewBag.Roles as List<LiceoRHV.SistemaAvisos.Models.Rol>;
+    var categorias = ViewBag.Categorias as List<LiceoRHV.SistemaAvisos.Models.Categorium>;
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Nueva Comunicación</h2>
+            <p>Creá un aviso o circular institucional.</p>
+        </div>
+    </div>
+
+    @if (ViewBag.ErrorComunicacion != null)
+    {
+        <p class="mensaje-error">@ViewBag.ErrorComunicacion</p>
+    }
+
+    <div class="tarjeta-listado" style="padding:24px;">
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="campo">
+                <label for="Titulo">Título</label>
+                <input type="text" id="Titulo" name="Titulo" required />
+            </div>
+
+            <div class="campo">
+                <label for="Contenido">Contenido</label>
+                <textarea id="Contenido" name="Contenido" rows="6" required
+                          style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;"></textarea>
+            </div>
+
+            <div class="campo">
+                <label>Tipo de comunicación</label>
+                <div class="selector-opciones">
+                    <label class="opcion-tarjeta">
+                        <input type="radio" name="Tipo" value="Aviso" checked />
+                        <span class="opcion-contenido">
+                            <strong>Aviso</strong>
+                            <small>Información general</small>
+                        </span>
+                    </label>
+                    <label class="opcion-tarjeta">
+                        <input type="radio" name="Tipo" value="Circular" />
+                        <span class="opcion-contenido">
+                            <strong>Circular</strong>
+                            <small>Comunicado formal</small>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-grid-2">
+                <div class="campo">
+                    <label for="FechaPublicacion">Fecha de publicación</label>
+                    <input type="datetime-local" id="FechaPublicacion" name="FechaPublicacion" />
+                </div>
+                <div class="campo">
+                    <label for="FechaVencimiento">Fecha de vencimiento</label>
+                    <input type="datetime-local" id="FechaVencimiento" name="FechaVencimiento" />
+                </div>
+            </div>
+
+            <div class="campo">
+                <label>Público destinatario</label>
+                <div class="selector-opciones">
+                    @foreach (var rol in roles)
+                    {
+                        <label class="opcion-tarjeta chica">
+                            <input type="checkbox" name="rolesSeleccionados" value="@rol.RolId" class="check-destinatario" />
+                            <span class="opcion-contenido">
+                                <strong>@rol.NombreRol</strong>
+                            </span>
+                        </label>
+                    }
+                </div>
+                <label class="seleccionar-todos">
+                    <input type="checkbox" id="seleccionarTodos" onclick="marcarTodosDestinatarios(this)" />
+                    Toda la comunidad educativa
+                </label>
+            </div>
+
+            <div class="campo">
+                <label>Categorías (opcional)</label>
+                <div class="selector-opciones" id="listaCategorias">
+                    @foreach (var cat in categorias)
+                    {
+                        <label class="opcion-tarjeta chica">
+                            <input type="checkbox" name="categoriasSeleccionadas" value="@cat.CategoriaId" />
+                            <span class="opcion-contenido"><strong>@cat.NombreCategoria</strong></span>
+                        </label>
+                    }
+                </div>
+                <div style="display:flex; gap:8px; margin-top:10px; max-width:340px;">
+                    <input type="text" id="nuevaCategoriaInput" placeholder="Nueva categoría..."
+                           style="flex:1; padding:8px 10px; border:1px solid #DCE5DD; border-radius:8px; font-size:13px;" />
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="agregarCategoria()">Agregar</button>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label>Adjuntos (PDF o imágenes)</label>
+
+                <input type="file" id="selectorArchivos" multiple accept=".pdf,.jpg,.jpeg,.png,.webp"
+                       style="display:none;" onchange="agregarArchivos(this.files); this.value='';" />
+                <input type="file" id="archivos" name="archivos" multiple style="display:none;" />
+
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('selectorArchivos').click()">
+                    + Agregar archivos
+                </button>
+
+                <div id="previewArchivos" class="preview-archivos"></div>
+            </div>
+
+            <div class="detalle-footer">
+                <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+                <button type="submit" class="btn-guardar-usuario">Guardar como borrador</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function marcarTodosDestinatarios(checkbox) {
+        document.querySelectorAll('.check-destinatario').forEach(function (c) {
+            c.checked = checkbox.checked;
+        });
+    }
+
+    function agregarCategoria() {
+        var input = document.getElementById('nuevaCategoriaInput');
+        var nombre = input.value.trim();
+        if (!nombre) return;
+
+        fetch('/Comunicaciones/CrearCategoriaRapida', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'nombreCategoria=' + encodeURIComponent(nombre)
+        })
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+            var lista = document.getElementById('listaCategorias');
+            var label = document.createElement('label');
+            label.className = 'opcion-tarjeta chica';
+            label.innerHTML = '<input type="checkbox" name="categoriasSeleccionadas" value="' + data.id + '" checked />' +
+                               '<span class="opcion-contenido"><strong>' + data.nombre + '</strong></span>';
+            lista.appendChild(label);
+            input.value = '';
+        });
+
+
+    }
+
+        let archivosAcumulados = [];
+
+    function agregarArchivos(nuevosFiles) {
+        for (const file of nuevosFiles) {
+            archivosAcumulados.push(file);
+        }
+        actualizarInputYPreview();
+    }
+
+    function quitarArchivo(index) {
+        archivosAcumulados.splice(index, 1);
+        actualizarInputYPreview();
+    }
+
+    function actualizarInputYPreview() {
+        const dt = new DataTransfer();
+        archivosAcumulados.forEach(file => dt.items.add(file));
+        document.getElementById('archivos').files = dt.files;
+
+        const contenedor = document.getElementById('previewArchivos');
+        contenedor.innerHTML = '';
+
+        archivosAcumulados.forEach((file, index) => {
+            const item = document.createElement('div');
+            item.className = 'preview-item';
+
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                item.appendChild(img);
+            } else {
+                const icono = document.createElement('div');
+                icono.className = 'preview-icono-archivo';
+                icono.textContent = '📄';
+                item.appendChild(icono);
+            }
+
+            const nombre = document.createElement('span');
+            nombre.className = 'preview-nombre';
+            nombre.textContent = file.name;
+            item.appendChild(nombre);
+
+            const quitar = document.createElement('button');
+            quitar.type = 'button';
+            quitar.className = 'preview-quitar';
+            quitar.textContent = '×';
+            quitar.onclick = function () { quitarArchivo(index); };
+            item.appendChild(quitar);
+
+            contenedor.appendChild(item);
+        });
+    }
+</script>

@@ -1,0 +1,271 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.Usuario>
+@{
+    var formValues = ViewBag.UsuarioForm as LiceoRHV.SistemaAvisos.Models.Usuario;
+}
+@if (TempData["ErrorEdicion"] != null)
+{
+    <div style="background:#FBE4E2; color:#A32C21; padding:10px 14px; border-radius:8px; margin-bottom:16px; font-size:13.5px;">
+        @TempData["ErrorEdicion"]
+    </div>
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Usuarios del Sistema</h2>
+            <p>Cuentas registradas y su estado actual.</p>
+        </div>
+        <button type="button" class="btn-nuevo-usuario" data-bs-toggle="modal" data-bs-target="#modalCrearUsuario">
+            + Nuevo usuario
+        </button>
+    </div>
+    <form method="get" asp-action="Index" class="filtros-listado">
+        <div class="filtro-campo">
+            <label>Cédula</label>
+            <input type="text" name="cedula" value="@ViewBag.FiltroCedula" placeholder="Buscar por cédula" />
+        </div>
+
+        <div class="filtro-campo">
+            <label>Rol</label>
+            <select name="rolId" asp-items="ViewBag.RolesFiltro">
+                <option value="">Todos los roles</option>
+            </select>
+        </div>
+
+        @{
+            string filtroEstadoActual = ViewBag.FiltroEstado as string ?? "";
+        }
+        <div class="filtro-campo">
+            <label>Estado</label>
+            <select name="estado">
+                <option value="" selected="@(filtroEstadoActual == "" ? "selected" : null)">Todos</option>
+                <option value="Pendiente" selected="@(filtroEstadoActual == "Pendiente" ? "selected" : null)">Pendiente</option>
+                <option value="Activa" selected="@(filtroEstadoActual == "Activa" ? "selected" : null)">Activa</option>
+                <option value="Rechazada" selected="@(filtroEstadoActual == "Rechazada" ? "selected" : null)">Rechazada</option>
+                <option value="Inactiva" selected="@(filtroEstadoActual == "Inactiva" ? "selected" : null)">Inactiva</option>
+            </select>
+        </div>
+
+        <div class="filtro-acciones">
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+            <a asp-action="Index" class="btn-limpiar-filtros">Limpiar</a>
+        </div>
+    </form>
+    <div class="tarjeta-listado">
+        @if (Model.Count == 0)
+        {
+            <p class="sin-datos">Todavía no hay usuarios registrados.</p>
+        }
+        else
+        {
+            <table class="tabla-institucional">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cédula</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var usuario in Model)
+                    {
+                        var claseBadge = usuario.Estado switch
+                        {
+                            "Activa" => "badge-activa",
+                            "Pendiente" => "badge-pendiente",
+                            "Rechazada" => "badge-rechazada",
+                            _ => "badge-inactiva"
+                        };
+                        <tr>
+                            <td>@usuario.Nombre</td>
+                            <td>@usuario.Cedula</td>
+                            <td>@usuario.Correo</td>
+                            <td>@usuario.Rol?.NombreRol</td>
+                            <td><span class="badge-estado @claseBadge">@usuario.Estado</span></td>
+                            <td>
+                                <button type="button" class="btn-ver-usuario" onclick="verUsuario(@usuario.UsuarioId)">
+                                    Ver
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<!-- Modal: Nuevo usuario -->
+<div class="modal fade modal-institucional" id="modalCrearUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nuevo usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-controller="Usuarios" asp-action="CrearDesdeGestion" method="post" autocomplete="off">
+                <div class="modal-body">
+
+                    @if (ViewBag.ErrorModal != null)
+                    {
+                        <p style="color:#A32C21; background:#FBE4E2; padding:10px 14px; border-radius:8px; font-size:13.5px; margin-bottom:14px;">
+                            @ViewBag.ErrorModal
+                        </p>
+                    }
+
+                    <label for="Nombre">Nombre completo</label>
+                    <input type="text" id="Nombre" name="Nombre" value="@formValues?.Nombre" autocomplete="off" required />
+
+                    <label for="Cedula">Cédula</label>
+                    <input type="text" id="Cedula" name="Cedula" value="@formValues?.Cedula"
+                           autocomplete="off" required
+                           pattern="[0-9\-]{9,12}" title="Solo números y guiones, entre 9 y 12 caracteres" />
+
+                    <label for="Correo">Correo</label>
+                    <input type="email" id="Correo" name="Correo" value="@formValues?.Correo" autocomplete="off" required />
+
+                    <label for="Telefono">Teléfono</label>
+                    <input type="text" id="Telefono" name="Telefono" value="@formValues?.Telefono"
+                           autocomplete="off"
+                           pattern="[0-9\-]{8,9}" title="Solo números y guiones, entre 8 y 9 caracteres" />
+
+                    <label for="RolId">Rol</label>
+                    <select id="RolId" name="RolId" asp-items="ViewBag.Roles" required autocomplete="off"></select>
+
+                    <label for="PasswordHash">Contraseña provisional</label>
+                    <input type="password" id="PasswordHash" name="PasswordHash" autocomplete="new-password" required />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-guardar-usuario">Guardar usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Ver usuario -->
+<div class="modal fade modal-institucional" id="modalVerUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalle del usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="contenidoModalVer">
+                <!-- se llena vía AJAX -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Confirmación genérica -->
+<div class="modal fade modal-institucional" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar acción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeConfirmacion" style="margin:0; font-size:14px; color:#33413A;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-guardar-usuario" id="btnConfirmarAccion">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Motivo de rechazo -->
+<div class="modal fade modal-institucional" id="modalRechazarUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Rechazar solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-controller="Usuarios" asp-action="Rechazar" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="rechazarUsuarioId" />
+                    <label for="motivo" style="font-size:13px; font-weight:500; color:#1A2E20; display:block; margin-bottom:6px;">
+                        Motivo del rechazo
+                    </label>
+                    <textarea name="motivo" id="motivo" rows="3" required
+                              style="width:100%; padding:10px 12px; border:1px solid #DCE5DD; border-radius:8px; font-size:14px; font-family:inherit;"></textarea>
+                    <p style="font-size:12.5px; color:#8A9A8C; margin-top:6px;">
+                        Este mensaje lo va a ver la persona la próxima vez que intente iniciar sesión.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-inactivar-usuario">Rechazar cuenta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function verUsuario(id) {
+        fetch('/Usuarios/Detalle/' + id)
+            .then(function (response) { return response.text(); })
+            .then(function (html) {
+                document.getElementById('contenidoModalVer').innerHTML = html;
+                var modal = new bootstrap.Modal(document.getElementById('modalVerUsuario'));
+                modal.show();
+            });
+    }
+
+        function abrirModalRechazo(id) {
+        document.getElementById('rechazarUsuarioId').value = id;
+
+        var modalVer = bootstrap.Modal.getInstance(document.getElementById('modalVerUsuario'));
+        if (modalVer) modalVer.hide();
+
+        var modalRechazo = new bootstrap.Modal(document.getElementById('modalRechazarUsuario'));
+        modalRechazo.show();
+    }
+
+    function mostrarEdicion() {
+        document.getElementById('vistaDetalleUsuario').style.display = 'none';
+        document.getElementById('formEdicionUsuario').style.display = 'block';
+    }
+
+    function ocultarEdicion() {
+        document.getElementById('formEdicionUsuario').style.display = 'none';
+        document.getElementById('vistaDetalleUsuario').style.display = 'block';
+    }
+
+    var formPendienteConfirmacion = null;
+
+    function confirmarAccion(form, mensaje) {
+        formPendienteConfirmacion = form;
+        document.getElementById('mensajeConfirmacion').textContent = mensaje;
+        var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        modal.show();
+    }
+
+    document.getElementById('btnConfirmarAccion').addEventListener('click', function () {
+        if (formPendienteConfirmacion) {
+            formPendienteConfirmacion.submit();
+        }
+    });
+</script>
+
+
+
+@if (ViewBag.ReabrirModal == true)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modalEl = document.getElementById('modalCrearUsuario');
+            var modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        });
+    </script>
+}

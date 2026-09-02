@@ -1,0 +1,31 @@
+﻿@model LiceoRHV.SistemaAvisos.Models.Usuario
+
+<h2>Registro de Usuario</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nombre completo</label>
+        <input asp-for="Nombre" />
+    </div>
+    <div>
+        <label>Cédula</label>
+        <input asp-for="Cedula" />
+    </div>
+    <div>
+        <label>Correo</label>
+        <input asp-for="Correo" />
+    </div>
+    <div>
+        <label>Teléfono</label>
+        <input asp-for="Telefono" />
+    </div>
+    <div>
+        <label>Rol</label>
+        <select asp-for="RolId" asp-items="ViewBag.Roles"></select>
+    </div>
+    <div>
+        <label>Contraseña</label>
+        <input asp-for="PasswordHash" type="password" />
+    </div>
+    <button type="submit">Registrarse</button>
+</form>
