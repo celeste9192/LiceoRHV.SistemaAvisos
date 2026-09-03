@@ -908,3 +908,54 @@ table.tabla-institucional {
         opacity: 0.92;
         color: #FFFFFF;
     }
+
+.grupo-galeria {
+    margin-bottom: 28px;
+}
+
+    .grupo-galeria h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1F4A30;
+        margin-bottom: 12px;
+    }
+
+.grid-galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.item-galeria {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+    .item-galeria img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.2s ease;
+    }
+
+    .item-galeria:hover img {
+        transform: scale(1.05);
+    }
+
+.btn-eliminar-foto {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(163,44,33,0.9);
+    color: #FFFFFF;
+    border: none;
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+}

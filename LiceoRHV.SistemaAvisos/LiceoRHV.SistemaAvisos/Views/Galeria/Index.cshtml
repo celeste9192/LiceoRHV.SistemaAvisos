@@ -1,0 +1,121 @@
+﻿@model List<IGrouping<LiceoRHV.SistemaAvisos.Models.Evento, LiceoRHV.SistemaAvisos.Models.Fotografium>>
+@{
+    ViewData["Title"] = "Galería";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Galería</h2>
+            <p>Fotografías agrupadas por evento.</p>
+        </div>
+    </div>
+
+    @if (TempData["MensajeGaleria"] != null)
+    {
+        <p class="mensaje-exito">@TempData["MensajeGaleria"]</p>
+    }
+
+    <form method="get" asp-action="Index" class="filtros-listado">
+        <div class="filtro-campo">
+            <label>Evento</label>
+            <select name="eventoId" asp-items="ViewBag.EventosFiltro" onchange="this.form.submit()">
+                <option value="">Todos los eventos</option>
+            </select>
+        </div>
+    </form>
+
+    @if (ViewBag.PuedeGestionar == true)
+    {
+        <div class="tarjeta-listado" style="padding:20px; margin-bottom:20px;">
+            <form method="post" asp-action="Subir" enctype="multipart/form-data">
+                <div class="form-grid-2">
+                    <div class="campo">
+                        <label>Evento</label>
+                        <select name="eventoId" required>
+                            @foreach (var e in ViewBag.EventosParaSubir as List<LiceoRHV.SistemaAvisos.Models.Evento>)
+                            {
+                                <option value="@e.EventoId">@e.Titulo (@e.FechaEvento.ToString("dd/MM/yyyy"))</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Fotografías</label>
+                        <input type="file" name="fotos" multiple accept=".jpg,.jpeg,.png,.webp" required />
+                    </div>
+                </div>
+                <div class="detalle-footer">
+                    <button type="submit" class="btn-guardar-usuario">Subir fotografías</button>
+                </div>
+            </form>
+        </div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <p class="sin-datos">Todavía no hay fotografías publicadas.</p>
+    }
+    else
+    {
+        @foreach (var grupo in Model)
+        {
+            <div class="grupo-galeria">
+                <h3>@grupo.Key.Titulo <span class="normativa-fecha">(@grupo.Key.FechaEvento.ToString("dd/MM/yyyy"))</span></h3>
+                <div class="grid-galeria">
+                    @foreach (var foto in grupo)
+                    {
+                        <div class="item-galeria">
+                            <a href="@foto.Archivo" target="_blank">
+                                <img src="@foto.Archivo" alt="Foto de @grupo.Key.Titulo" loading="lazy" />
+                            </a>
+                            @if (ViewBag.PuedeGestionar == true)
+                            {
+                                <form asp-action="Eliminar" method="post" id="formEliminarFoto@(foto.FotografiaId)">
+                                    <input type="hidden" name="id" value="@foto.FotografiaId" />
+                                    <button type="button" class="btn-eliminar-foto"
+                                            onclick="confirmarAccion(document.getElementById('formEliminarFoto@(foto.FotografiaId)'), '¿Eliminar esta fotografía?')">
+                                        ×
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@if (ViewBag.PuedeGestionar == true)
+{
+    <!-- Modal: Confirmación genérica -->
+    <div class="modal fade modal-institucional" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensajeConfirmacion" style="margin:0; font-size:14px; color:#33413A;"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-guardar-usuario" id="btnConfirmarAccion">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var formPendienteConfirmacion = null;
+        function confirmarAccion(form, mensaje) {
+            formPendienteConfirmacion = form;
+            document.getElementById('mensajeConfirmacion').textContent = mensaje;
+            new bootstrap.Modal(document.getElementById('modalConfirmacion')).show();
+        }
+        document.getElementById('btnConfirmarAccion').addEventListener('click', function () {
+            if (formPendienteConfirmacion) formPendienteConfirmacion.submit();
+        });
+    </script>
+}

@@ -18,7 +18,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddDbContext<LiceoRHVContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LiceoRHVConnection")));
 
-
+builder.Services.AddScoped<LiceoRHV.SistemaAvisos.Services.AuditoriaService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

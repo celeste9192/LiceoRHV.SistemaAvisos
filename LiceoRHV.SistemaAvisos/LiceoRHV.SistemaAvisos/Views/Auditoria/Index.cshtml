@@ -1,0 +1,86 @@
+﻿@model List<LiceoRHV.SistemaAvisos.Models.RegistroAuditorium>
+@{
+    ViewData["Title"] = "Auditoría";
+}
+
+<div class="pagina-listado">
+    <div class="encabezado-listado">
+        <div>
+            <h2>Auditoría</h2>
+            <p>Historial de acciones realizadas en el sistema.</p>
+        </div>
+    </div>
+
+    <form method="get" asp-action="Index" class="filtros-listado">
+        <div class="filtro-campo">
+            <label>Usuario</label>
+            <select name="usuarioId" asp-items="ViewBag.UsuariosFiltro">
+                <option value="">Todos</option>
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Módulo</label>
+            <select name="modulo">
+                <option value="">Todos</option>
+                @foreach (var m in ViewBag.ModulosFiltro as List<string>)
+                {
+                    <option value="@m" selected="@(ViewBag.FiltroModulo == m ? "selected" : null)">@m</option>
+                }
+            </select>
+        </div>
+
+        <div class="filtro-campo">
+            <label>Tipo de acción</label>
+            <input type="text" name="accion" value="@ViewBag.FiltroAccion" placeholder="Ej: Crear, Editar..." />
+        </div>
+
+        <div class="filtro-campo">
+            <label>Desde</label>
+            <input type="date" name="fechaDesde" value="@ViewBag.FiltroFechaDesde" />
+        </div>
+
+        <div class="filtro-campo">
+            <label>Hasta</label>
+            <input type="date" name="fechaHasta" value="@ViewBag.FiltroFechaHasta" />
+        </div>
+
+        <div class="filtro-acciones">
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+            <a asp-action="Index" class="btn-limpiar-filtros">Limpiar</a>
+        </div>
+    </form>
+
+    <div class="tarjeta-listado">
+        @if (Model.Count == 0)
+        {
+            <p class="sin-datos">No hay registros que coincidan con el filtro.</p>
+        }
+        else
+        {
+            <table class="tabla-institucional">
+                <thead>
+                    <tr>
+                        <th>Fecha y hora</th>
+                        <th>Usuario</th>
+                        <th>Módulo</th>
+                        <th>Acción</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var r in Model)
+                    {
+                        <tr>
+                            <td>@r.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@(r.Usuario != null ? r.Usuario.Nombre : "Sistema")</td>
+                            <td>@r.Modulo</td>
+                            <td>@r.Accion</td>
+                            <td>@r.Descripcion</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

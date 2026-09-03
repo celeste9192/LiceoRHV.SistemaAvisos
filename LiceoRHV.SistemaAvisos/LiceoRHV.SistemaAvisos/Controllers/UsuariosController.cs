@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using LiceoRHV.SistemaAvisos.Services; // agregar arriba
+
 
 
 namespace LiceoRHV.SistemaAvisos.Controllers
@@ -13,10 +15,12 @@ namespace LiceoRHV.SistemaAvisos.Controllers
     {
         private readonly LiceoRHVContext _context;
         private readonly PasswordHasher<Usuario> _hasher = new PasswordHasher<Usuario>();
+        private readonly AuditoriaService _auditoria; // agregar el campo
 
-        public UsuariosController(LiceoRHVContext context)
+    public UsuariosController(LiceoRHVContext context, AuditoriaService auditoria)
         {
             _context = context;
+            _auditoria = auditoria;
         }
         public IActionResult Index(string? estado, int? rolId, string? cedula)
         {
@@ -63,7 +67,10 @@ namespace LiceoRHV.SistemaAvisos.Controllers
                 ViewBag.Roles = new SelectList(_context.Rols, "RolId", "NombreRol", usuario.RolId);
 
                 var listaConError = _context.Usuarios.Include(u => u.Rol).ToList();
+                _auditoria.Registrar(User, "Usuarios", "Crear",
+    $"Se creó el usuario {usuario.Nombre} ({usuario.Correo}) con rol {usuario.RolId}, estado Activa.");
                 return View("Index", listaConError);
+                
             }
 
             usuario.Estado = "Activa";
@@ -114,6 +121,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             usuario.RolId = RolId;
 
             _context.SaveChanges();
+            _auditoria.Registrar(User, "Usuarios", "Editar",
+    $"Se editó la información del usuario {usuario.Nombre} ({usuario.Correo}).");
             return RedirectToAction("Index");
         }
 
@@ -138,6 +147,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             }
 
             _context.SaveChanges();
+            _auditoria.Registrar(User, "Usuarios", nuevoEstado == "Activa" ? "Activar" : "Inactivar",
+    $"Se cambió el estado del usuario {usuario.Nombre} a {nuevoEstado}.");
             return RedirectToAction("Index");
         }
 
@@ -159,6 +170,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             usuario.FechaRevision = DateTime.Now;
 
             _context.SaveChanges();
+            _auditoria.Registrar(User, "Usuarios", "Rechazar",
+    $"Se rechazó la cuenta de {usuario.Nombre}. Motivo: {motivo}");
             return RedirectToAction("Index");
         }
 

@@ -69,3 +69,9 @@ wwwroot\uploads\comunicaciones\8dbbf109-cb32-40a4-9ee9-c9069ee1c628.png
 wwwroot\uploads\comunicaciones\b8bfb2b0-40f2-4989-84cc-ed702a488e70.png
 wwwroot\uploads\comunicaciones\cc24d2d0-f207-411f-af6e-46f7664fe46b.jpg
 wwwroot\uploads\normativa\ae593e87-cbfe-4a5e-8929-550fdab2f8b9.pdf
+wwwroot\uploads\eventos\73ca09e8-5888-4c81-9fd4-854340ea8c32.pdf
+wwwroot\uploads\galeria\e4b842cf-8932-4418-a921-3208bae72ec2.jpg
+wwwroot\uploads\galeria\9312d8e5-6b9a-467c-9361-efe4e20cc252.png
+wwwroot\uploads\galeria\be4a3b41-770e-4caf-8aca-7a9b0beacef4.jpg
+wwwroot\uploads\galeria\ebc804a7-ec13-4d30-9360-7908a7b0e937.jpg
+wwwroot\uploads\galeria\cbdc5442-79b5-4345-a8c6-ed45f68f34d0.jpg

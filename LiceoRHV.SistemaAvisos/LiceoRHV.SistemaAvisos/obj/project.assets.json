@@ -4177,11 +4177,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
+      "projectUniqueName": "C:\\Users\\Maria\\Documents\\GitHub\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
       "projectName": "LiceoRHV.SistemaAvisos",
-      "projectPath": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
+      "projectPath": "C:\\Users\\Maria\\Documents\\GitHub\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
       "packagesPath": "C:\\Users\\Maria\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\obj\\",
+      "outputPath": "C:\\Users\\Maria\\Documents\\GitHub\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

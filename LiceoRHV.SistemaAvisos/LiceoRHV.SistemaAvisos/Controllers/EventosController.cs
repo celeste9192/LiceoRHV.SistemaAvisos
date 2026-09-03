@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using LiceoRHV.SistemaAvisos.Services;
 
 namespace LiceoRHV.SistemaAvisos.Controllers
 {
@@ -17,11 +18,13 @@ namespace LiceoRHV.SistemaAvisos.Controllers
     {
         private readonly LiceoRHVContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly AuditoriaService _auditoria;
 
-        public EventosController(LiceoRHVContext context, IWebHostEnvironment env)
+        public EventosController(LiceoRHVContext context, IWebHostEnvironment env, AuditoriaService auditoria)
         {
             _context = context;
             _env = env;
+            _auditoria = auditoria;
         }
 
         private bool EsGestion()
@@ -175,6 +178,9 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             }
 
             TempData["MensajeEvento"] = "Evento publicado correctamente.";
+            _auditoria.Registrar(User, "Eventos", "Crear",
+    $"Se creó el evento '{evento.Titulo}' para el {evento.FechaEvento:dd/MM/yyyy}.");
+
             return RedirectToAction("Index");
         }
 
@@ -240,6 +246,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeEvento"] = "Evento actualizado correctamente.";
+            _auditoria.Registrar(User, "Eventos", "Editar",
+    $"Se editó el evento '{evento.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -267,6 +275,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeEvento"] = "Evento eliminado correctamente.";
+            _auditoria.Registrar(User, "Eventos", "Eliminar",
+    $"Se eliminó el evento '{evento.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -309,6 +319,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeEvento"] = "¡Listo! Quedaste inscrito en el evento.";
+            _auditoria.Registrar(User, "Eventos", "Inscripción",
+    $"{usuario.Nombre} se inscribió en el evento '{evento.Titulo}'.");
             return RedirectToAction("Index", "Home");
         }
 
@@ -327,7 +339,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
                 _context.SaveChanges();
                 TempData["MensajeEvento"] = "Tu inscripción fue cancelada.";
             }
-
+            _auditoria.Registrar(User, "Eventos", "Cancelar inscripción",
+    $"Se canceló una inscripción en el evento con ID {id}.");
             return RedirectToAction("Index", "Home");
         }
 

@@ -11,22 +11,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using LiceoRHV.SistemaAvisos.Services;
 
 namespace LiceoRHV.SistemaAvisos.Controllers
 {
     public class AccountController : Controller
     {
         private readonly LiceoRHVContext _context;
+        private readonly AuditoriaService _auditoria;
 
-        
+
 
 
         private readonly IConfiguration _config;
 
-        public AccountController(LiceoRHVContext context, IConfiguration config)
+        public AccountController(LiceoRHVContext context, IConfiguration config, AuditoriaService auditoria)
         {
             _context = context;
             _config = config;
+            _auditoria = auditoria;
         }
 
         private void EnviarCorreo(string destinatario, string asunto, string cuerpo)
@@ -174,6 +177,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["RegistroExitoso"] = "¡Listo! Tu cuenta fue creada y está pendiente de aprobación. Te avisaremos cuando puedas ingresar.";
+            _auditoria.Registrar(User, "Usuarios", "Registro",
+    $"Se registró una nueva cuenta pendiente: {usuario.Nombre} ({usuario.Correo}).");
             return RedirectToAction("Login");
         }
 
@@ -274,6 +279,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
                 TempData["ErrorPerfil"] = correoExiste
                     ? "Ya existe otra cuenta con ese correo."
                     : "Ya existe otra cuenta con esa cédula.";
+                _auditoria.Registrar(User, "Usuarios", "Editar",
+    $"{usuario.Nombre} actualizó su propia información de perfil.");
                 return RedirectToAction("Perfil");
             }
 
@@ -319,6 +326,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajePerfil"] = "Tu contraseña fue actualizada correctamente.";
+            _auditoria.Registrar(User, "Usuarios", "Cambiar contraseña",
+    $"{usuario.Nombre} cambió su contraseña.");
             return RedirectToAction("Perfil");
         }
 

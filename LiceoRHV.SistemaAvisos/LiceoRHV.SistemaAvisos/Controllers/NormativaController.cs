@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
+using LiceoRHV.SistemaAvisos.Services;
 
 namespace LiceoRHV.SistemaAvisos.Controllers
 {
@@ -12,11 +13,13 @@ namespace LiceoRHV.SistemaAvisos.Controllers
     {
         private readonly LiceoRHVContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly AuditoriaService _auditoria;
 
-        public NormativaController(LiceoRHVContext context, IWebHostEnvironment env)
+        public NormativaController(LiceoRHVContext context, IWebHostEnvironment env, AuditoriaService auditoria)
         {
             _context = context;
             _env = env;
+            _auditoria = auditoria;
         }
 
         private bool EsGestion()
@@ -95,6 +98,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeNormativa"] = "Normativa publicada correctamente.";
+            _auditoria.Registrar(User, "Normativa Interna", "Crear",
+    $"Se publicó la normativa '{normativa.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -157,6 +162,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeNormativa"] = "Normativa actualizada correctamente.";
+            _auditoria.Registrar(User, "Normativa Interna", "Editar",
+    $"Se editó la normativa '{normativa.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -176,6 +183,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeNormativa"] = "Normativa eliminada correctamente.";
+            _auditoria.Registrar(User, "Normativa Interna", "Eliminar",
+    $"Se eliminó la normativa '{normativa.Titulo}'.");
             return RedirectToAction("Index");
         }
     }

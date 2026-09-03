@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Normativa" asp-action="Index">Normativa Interna</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Galeria" asp-action="Index">Galería</a>
+                        </li>
                         </li>
 
                         @{
@@ -44,8 +47,8 @@
                                     <li><a class="dropdown-item" asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
                                     <li><a class="dropdown-item" asp-controller="Comunicaciones" asp-action="Index">Avisos y Circulares</a></li>
                                     <li><a class="dropdown-item" asp-controller="Eventos" asp-action="Index">Eventos</a></li>
-                                    <li><a class="dropdown-item" href="#">Galería</a></li>
-                                    <li><a class="dropdown-item" href="#">Auditoría</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Auditoria" asp-action="Index">Auditoría</a></li>
+                                    
                                 </ul>
                             </li>
                         }

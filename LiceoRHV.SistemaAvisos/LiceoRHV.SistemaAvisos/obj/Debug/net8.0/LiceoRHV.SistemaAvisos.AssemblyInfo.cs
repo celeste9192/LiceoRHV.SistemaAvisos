@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LiceoRHV.SistemaAvisos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f16e5e74e633de6dd6a34cf24253ef17e598dc4b")]
 [assembly: System.Reflection.AssemblyProductAttribute("LiceoRHV.SistemaAvisos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LiceoRHV.SistemaAvisos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

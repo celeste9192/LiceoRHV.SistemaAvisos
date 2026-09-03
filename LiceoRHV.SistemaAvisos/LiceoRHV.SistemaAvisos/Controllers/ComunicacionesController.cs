@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using LiceoRHV.SistemaAvisos.Services;
 
 namespace LiceoRHV.SistemaAvisos.Controllers
 {
@@ -13,11 +14,13 @@ namespace LiceoRHV.SistemaAvisos.Controllers
     {
         private readonly LiceoRHVContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly AuditoriaService _auditoria;
 
-        public ComunicacionesController(LiceoRHVContext context, IWebHostEnvironment env)
+        public ComunicacionesController(LiceoRHVContext context, IWebHostEnvironment env, AuditoriaService auditoria)
         {
             _context = context;
             _env = env;
+            _auditoria = auditoria;
         }
 
         private void ActualizarEstadosAutomaticos()
@@ -27,7 +30,12 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             var paraPublicar = _context.Comunicacions
                 .Where(c => c.Estado == "Borrador" && c.FechaPublicacion != null && c.FechaPublicacion <= ahora)
                 .ToList();
-            foreach (var c in paraPublicar) c.Estado = "Publicada";
+            foreach (var c in paraPublicar)
+            {
+                c.Estado = "Publicada";
+                _auditoria.RegistrarAutomatico("Comunicaciones", "Publicación automática",
+                    $"Se publicó automáticamente la comunicación '{c.Titulo}' según la fecha programada.");
+            }
 
             var paraVencer = _context.Comunicacions
                 .Where(c => c.Estado == "Publicada" && c.FechaVencimiento != null && c.FechaVencimiento <= ahora)
@@ -176,6 +184,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             }
 
             TempData["MensajeComunicacion"] = "Comunicación creada como borrador.";
+            _auditoria.Registrar(User, "Comunicaciones", "Crear",
+    $"Se creó la comunicación '{comunicacion.Titulo}' ({comunicacion.Tipo}).");
             return RedirectToAction("Index");
         }
 
@@ -250,6 +260,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeComunicacion"] = "Comunicación actualizada correctamente.";
+            _auditoria.Registrar(User, "Comunicaciones", "Editar",
+    $"Se editó la comunicación '{comunicacion.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -262,7 +274,8 @@ namespace LiceoRHV.SistemaAvisos.Controllers
 
             comunicacion.Destacada = !comunicacion.Destacada;
             _context.SaveChanges();
-
+            _auditoria.Registrar(User, "Comunicaciones", "Destacar",
+    $"Se {(comunicacion.Destacada ? "marcó" : "quitó")} como destacada la comunicación '{comunicacion.Titulo}'.");
             return RedirectToAction("Index");
         }
 
@@ -291,6 +304,9 @@ namespace LiceoRHV.SistemaAvisos.Controllers
             _context.SaveChanges();
 
             TempData["MensajeComunicacion"] = "Comunicación eliminada correctamente.";
+            _auditoria.Registrar(User, "Comunicaciones", "Eliminar",
+    $"Se eliminó la comunicación '{comunicacion.Titulo}'.");
+
             return RedirectToAction("Index");
         }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YZC3YLNBaSI=",
+  "dgSpecHash": "VS90vmJWDiY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maria\\Desktop\\Tcu\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
+  "projectFilePath": "C:\\Users\\Maria\\Documents\\GitHub\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos\\LiceoRHV.SistemaAvisos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maria\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Maria\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
